@@ -7,12 +7,6 @@
   background-color: #fff;
 }
 
-pre {
-  overflow: auto;
-  background-color: #f2f4f7;
-  padding: 1rem;
-}
-
 .more {
   font: inherit;
   display: block;
@@ -26,4 +20,54 @@ pre {
   &:hover, &:focus {
     background-color: #ebecf0;
   }
+}
+
+.category {
+  font: inherit;
+  display: block;
+  margin-top: .5rem;
+  margin-right: .5rem;
+  border: 1px solid #d7dbe0;
+  border-radius: .25rem;
+  padding: .5rem 0.5rem;
+  background-color: #fff;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    background-color: #ebecf0;
+  }
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product {
+  min-width: 16rem;
+  max-width: 25rem;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+          line-clamp: 3; 
+  -webkit-box-orient: vertical;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 2/1;
 }
