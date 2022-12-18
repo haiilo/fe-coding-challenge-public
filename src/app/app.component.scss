@@ -50,12 +50,15 @@
   max-width: 25rem;
   margin: 20px;
   cursor: pointer;
+  flex-grow: 1;
+  width: 25%;
 }
 
 .products {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .description {
@@ -75,4 +78,14 @@ img {
 
 .visible {
   display: block;
+}
+
+.loading {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+mat-spinner {
+  display: none;
 }

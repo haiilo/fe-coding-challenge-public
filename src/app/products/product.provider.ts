@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { BehaviorSubject, catchError, EMPTY, exhaustMap, Observable, of, Subject } from "rxjs";
+import { BehaviorSubject, catchError, EMPTY, exhaustMap, Observable, of, Subject, tap } from "rxjs";
 import { Product } from "./product";
 import { ProductService } from "./product.service";
 
@@ -10,11 +10,13 @@ import { ProductService } from "./product.service";
 export class ProductProvider {
 
     private productsSubject = new BehaviorSubject<Product[]>([]);
-    private hasMoreSubject = new BehaviorSubject<boolean>(false);
+    private hasMoreSubject = new BehaviorSubject<boolean>(true);
+    private loadingSubject = new BehaviorSubject<boolean>(false);
     private loadMoreSubject = new Subject<void>();
 
     products$: Observable<Product[]> = this.productsSubject.asObservable();
     hasMore$: Observable<boolean> = this.hasMoreSubject.asObservable();
+    loading$: Observable<boolean> = this.loadingSubject.asObservable();
 
     crtPageNumber: number = 0;
 
@@ -25,12 +27,18 @@ export class ProductProvider {
         this.loadMoreSubject.asObservable()
             .pipe(
                 exhaustMap(() => {
-                    toastr.info(`Send request for page '${this.crtPageNumber}'.`, 'Page Number')
+                    toastr.info(`Send request for page '${this.crtPageNumber}'.`, 'Page Number');
+                    this.loadingSubject.next(true);
                     return this.productService.get(this.crtPageNumber);
                 }),
                 catchError((err, caught) => {
                     toastr.error(err.message, 'Error');
+                    this.loadingSubject.next(false);
+                    this.hasMoreSubject.next(true);
                     return caught;
+                }),
+                tap(() => {
+                    this.loadingSubject.next(false);
                 })
             ).subscribe({
                 next: page => {
@@ -39,7 +47,7 @@ export class ProductProvider {
                     this.hasMoreSubject.next(page.more);
                     this.crtPageNumber++;
                     if(!page.more) {
-                        toastr.info(`No more products after ${this.crtPageNumber} pages.`, 'No More Products')
+                        toastr.info(`No more products after ${this.crtPageNumber} pages.`, 'No More Products');
                     }
                 },
                 error: (err) => toastr.error('There is no error here!', 'Error2')

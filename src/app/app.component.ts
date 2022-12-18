@@ -17,6 +17,7 @@ export class AppComponent {
   
   products$: Observable<Product[]> = this.productProvider.products$;
   hasMore$: Observable<boolean> = this.productProvider.hasMore$;
+  loading$: Observable<boolean> = this.productProvider.loading$;
 
   constructor(
     private readonly productProvider: ProductProvider,

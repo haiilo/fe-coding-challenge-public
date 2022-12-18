@@ -29,6 +29,14 @@
       </mat-card-content>
     </mat-card>
   </div>
+  
+  <div
+      class="loading">
+    <mat-spinner
+        [class.visible]="loading$ | async">
+    </mat-spinner>
+  </div>
+
   <button 
       class="more"
       [class.visible]="hasMore$ | async"
