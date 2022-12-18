@@ -16,6 +16,7 @@
   padding: 1rem 2rem;
   background-color: #fff;
   cursor: pointer;
+  display: none;
 
   &:hover, &:focus {
     background-color: #ebecf0;
@@ -70,4 +71,8 @@ img {
   object-fit: cover;
   width: 100%;
   aspect-ratio: 2/1;
+}
+
+.visible {
+  display: block;
 }

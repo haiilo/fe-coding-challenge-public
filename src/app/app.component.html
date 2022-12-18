@@ -5,7 +5,7 @@
       *ngIf="products$ | async; let products">
     <mat-card 
         class="product"
-        *ngFor="let product of products.content"
+        *ngFor="let product of products"
         (click)="openLink(product.url)">
       <img 
           mat-card-image src="{{product.image || noImageUrl}}">
@@ -29,5 +29,10 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <button class="more">Load more</button>
+  <button 
+      class="more"
+      [class.visible]="hasMore$ | async"
+      (click)="loadMore()">
+    Load more
+  </button>
 </div>
