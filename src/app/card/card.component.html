@@ -1,0 +1,12 @@
+<a class="card" href="{{product.url}}" target="_blank">
+      <img src="{{product.image}}" alt="{{product.title}}" class="card-image"/>
+      <div class="card-content">
+        <h1 class="card-header">{{product.title}}</h1>
+        <p class="card-text">{{product.description}}</p>
+      </div>
+      <div class="card-footer">
+        <span class="tag" *ngFor="let category of product.categories">
+          {{category}}
+        </span>
+      </div>
+</a>
