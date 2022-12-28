@@ -1,6 +1,36 @@
-<div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
+<div 
+    class="stage">
+  <div 
+      class="products" 
+      *ngIf="products$ | async; let products">
+    <mat-card 
+        class="product"
+        *ngFor="let product of products.content">
+      <a 
+          href="{{product.url}}" 
+          target="_blank">
+      </a>
+      <img 
+          mat-card-image src="{{product.image || noImageUrl}}">
+      <mat-card-header>
+          <mat-card-title><b>{{product.title}}</b></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p
+            class="description">
+          {{product.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions
+          class="categories">
+          <button 
+              class="category"
+              *ngFor="let category of product.categories"
+              (click)="openCategory(category); $event.stopPropagation();">
+            {{category}}
+          </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
   <button class="more">Load more</button>
 </div>
