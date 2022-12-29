@@ -1,0 +1,12 @@
+<div 
+    class="products">
+  <app-product 
+      [product]="product"
+      *ngFor="let product of products$ | async">
+  </app-product>
+</div>
+
+<app-more
+    [loading]="true"
+    [hasMore]="true">
+</app-more>

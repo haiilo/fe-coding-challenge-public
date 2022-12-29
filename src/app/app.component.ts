@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { Page } from './products/page';
 import { Product } from './products/product';
 import { ProductService } from './products/product.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -12,17 +11,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent {
 
-  noImageUrl = 'https://via.placeholder.com/400/888888/FFFFFF/?text=NoImage';
-
   constructor(
-    private readonly productService: ProductService,
-    private readonly toastr: ToastrService
+    private readonly productService: ProductService
   ) {
   }
 
   readonly products$: Observable<Page<Product>> = this.productService.get(0);
-
-  openCategory(category: string) {
-    this.toastr.success(`Category '${category}' selected.`, 'Category');
-  }
 }

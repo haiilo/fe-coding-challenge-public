@@ -17,8 +17,8 @@ import { Product } from './product';
   providedIn: 'root',
 })
 export class ProductService {
-  private static readonly PAGE_SIZE = 7;
-  private static readonly PAGE_COUNT = 10;
+  private static readonly PAGE_SIZE = 12;
+  private static readonly PAGE_COUNT = 4;
   private static readonly PAGE_ERROR = 0.1;
 
   /**

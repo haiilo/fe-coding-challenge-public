@@ -1,11 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { ToastrModule } from 'ngx-toastr';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
+import { ToastrModule } from 'ngx-toastr';
+
+import { AppComponent } from './app.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductsComponent } from './components/products/products.component';
+import { MoreComponent } from './components/more/more.component';
 
 @NgModule({
   imports: [
@@ -13,9 +17,15 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     CommonModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent, 
+    ProductComponent, 
+    ProductsComponent, 
+    MoreComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
