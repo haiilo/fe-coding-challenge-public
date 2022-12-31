@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { Product } from 'src/app/products/product';
+import { Product } from 'src/app/models/product';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-product',
@@ -14,11 +14,11 @@ export class ProductComponent {
   @Input() product!: Product;
 
   constructor(
-    private readonly toastr: ToastrService
+    private readonly messageService: MessageService
   ) {
   }
 
   openCategory(category: string) {
-    this.toastr.success(`Category '${category}' selected.`, 'Category');
+    this.messageService.debugInfoCategory(category);
   }
 }

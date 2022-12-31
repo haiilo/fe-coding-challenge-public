@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-more',
@@ -7,6 +7,12 @@ import { Component, Input } from '@angular/core';
 })
 export class MoreComponent {
 
-  @Input() loading: boolean = false;
-  @Input() hasMore: boolean = false;
+  @Input() loading: boolean | null = false;
+  @Input() couldLoadMore: boolean | null = false;
+
+  @Output() loadMore: EventEmitter<void> = new EventEmitter();
+
+  loadMoreProducts() {
+    this.loadMore.emit();
+  }
 }

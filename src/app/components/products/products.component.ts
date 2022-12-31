@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { Product } from 'src/app/products/product';
-import { ProductService } from 'src/app/products/product.service';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/models/product';
+import { ProductsStore } from './products.store';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  providers: [ProductsStore]
 })
 export class ProductsComponent {
 
-  readonly products$: Observable<Product[]> = this.productService.get(0).pipe(map(page => page.content));
+  readonly products$: Observable<Product[]> = this.productsStore.products$;
+  readonly loading$: Observable<boolean> = this.productsStore.loading$;
+  readonly couldLoadMore$: Observable<boolean> = this.productsStore.couldLoadMore$;
 
   constructor(
-    private readonly productService: ProductService
+    private readonly productsStore: ProductsStore
   ) {
+  }
+
+  loadMore() {
+    this.productsStore.loadMore();
   }
 }

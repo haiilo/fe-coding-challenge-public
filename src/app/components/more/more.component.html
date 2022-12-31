@@ -5,6 +5,7 @@
 
 <button 
         class="more"
-        [class.visible]="hasMore">
+        [class.visible]="couldLoadMore"
+        (click)="loadMoreProducts()">
     Load more
 </button>
