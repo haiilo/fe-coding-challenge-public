@@ -1,0 +1,23 @@
+.more {
+  font: inherit;
+  display: none;
+  margin: 4rem auto 0;
+  border: 1px solid #d7dbe0;
+  border-radius: .25rem;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  cursor: pointer;
+  
+  &:hover, &:focus {
+    background-color: #ebecf0;
+  }
+}
+  
+.loading {
+  display: none;
+  margin: 4rem auto;
+}
+
+.visible {
+    display: block;
+}

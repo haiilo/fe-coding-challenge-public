@@ -7,8 +7,8 @@ import {
   randUrl
 } from '@ngneat/falso';
 import { delay, Observable, of, throwError } from 'rxjs';
-import { Page } from './page';
-import { Product } from './product';
+import { Page } from '../models/page';
+import { Product } from '../models/product';
 
 /**
  * A service to handle products.
