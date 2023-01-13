@@ -1,0 +1,13 @@
+<ng-container *ngIf="product">
+    <img class="image" [src]="product.image" [alt]="product.title">
+
+    <div class="content">
+        <h3>{{product.title}}</h3>
+
+        <p>{{product.description}}</p>
+    
+        <div *ngIf="product.categories as categories" class="tags">
+            <span *ngFor="let category of categories" class="tag">{{category}}</span>
+        </div>
+    </div>
+</ng-container>

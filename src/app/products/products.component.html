@@ -1,0 +1,14 @@
+<ng-container *ngIf="products$ | async; let products">
+    <div class="products" #container>
+        <app-product *ngFor="let product of products.content" [product]="product"></app-product>
+    </div>
+
+    <p *ngIf="isLoading">Loading...</p>
+
+    <div *ngIf="!isLoading && error" class="error">
+        <p>The following error has occured, you can try again.</p>
+        <p>{{error}}</p>
+    </div>
+
+    <button *ngIf="products.more && !isLoading" class="more" (click)="loadMore();">Load more</button>
+</ng-container>
