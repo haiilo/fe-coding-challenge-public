@@ -27,6 +27,7 @@ describe('ProductCardComponent', () => {
       image: 'MOCK_URL',
       categories: [],
     };
+    fixture.detectChanges();
     const card = fixture.debugElement.nativeElement.querySelector('.product-card');
     card.click();
     expect(window.open).toHaveBeenCalledWith('MOCK_URL', '_blank');
