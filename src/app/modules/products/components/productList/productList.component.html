@@ -1,0 +1,16 @@
+<div class="products-page">
+  <div class="productsList">
+    <app-product-card *ngFor="let product of products.content" [product]="product"></app-product-card>
+  </div>
+
+  <div *ngIf="!isLoading && error" class="error">
+    <p>Something went wrong. Please refresh or try again.</p>
+    <p>{{error}}</p>
+  </div>
+
+  <button *ngIf="products.more && !isLoading" class="loadMore" (click)="getPage();">Load more</button>
+  <div class="loading-spinner-wrapper" *ngIf="isLoading">
+    <div class="lds-dual-ring"></div>
+  </div>
+</div>
+
