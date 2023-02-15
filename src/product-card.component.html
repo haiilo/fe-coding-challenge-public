@@ -1,0 +1,20 @@
+<ng-container *ngIf="product">
+  <div class="product-card">
+    <img class="image"
+         [src]="product.image ? product.image : '../../../assets/default.png'"
+         (error)="product.image = '../../../assets/default.png'"
+         [alt]="product.title">
+
+    <div class="content">
+      <div class="content-body">
+        <h3>{{product.title}}</h3>
+
+        <p>{{product.description}}</p>
+      </div>
+
+      <div *ngIf="product.categories as categories" class="categories">
+        <span *ngFor="let category of categories" class="category">{{category}}</span>
+      </div>
+    </div>
+  </div>
+</ng-container>
