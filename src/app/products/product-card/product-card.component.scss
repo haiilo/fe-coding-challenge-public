@@ -1,0 +1,122 @@
+$product-card-bg: #f8f8f8;
+$product-card-color: #333;
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 16rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  width: calc(25% - 1rem);
+  margin-bottom: 1rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  &__image {
+    height: 0;
+    padding-bottom: 50%;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    margin: 1rem 0 0 0;
+    color: $product-card-color;
+  }
+
+  &__description {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    color: $product-card-color;
+  }
+
+  &__categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+
+  &__category {
+    font-size: 0.875rem;
+    margin: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: $product-card-color;
+    background: $product-card-bg;
+  }
+}
+
+.load-more-button {
+  width: 400px;
+  margin: 2rem;
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  background-color: #007bff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #0069d9;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &.loading {
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-top: -0.75rem;
+      margin-left: -0.75rem;
+      border-radius: 50%;
+      border: 0.25rem solid rgba(255, 255, 255, 0.2);
+      border-top-color: #ffffff;
+      animation: spin 0.6s linear infinite;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
