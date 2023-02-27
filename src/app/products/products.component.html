@@ -1,0 +1,39 @@
+<div class="page page--products">
+  <!-- Products -->
+  <div [@fade] class="products" *ngIf="pageData$ | async; let products">
+    <app-product
+      [@fade]
+      *ngFor="let product of products"
+      [product]="product"
+    ></app-product>
+  </div>
+
+  <!-- Page statuses -->
+  <ng-container [ngSwitch]="pageStatus">
+    <!-- Todo: to improve, add spinner + animation  -->
+    <ng-container *ngSwitchCase="'loading'">
+      <div class="loader">
+        <app-alert
+          [text]="'Loading...'"
+          [type]="'info'"
+          [showIcon]="true"
+        ></app-alert>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'error'">
+      <div class="alert">
+        <app-alert
+          [text]="pageStatusMessage"
+          [type]="'warning'"
+          [showIcon]="true"
+        ></app-alert>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <!-- Load More -->
+  <button class="btn" *ngIf="showLoadMore" (click)="getMore()">
+    {{ pageStatus === "error" ? "Retry" : "Load more" }}
+  </button>
+</div>

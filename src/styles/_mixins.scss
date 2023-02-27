@@ -1,0 +1,128 @@
+@import '_variables.scss';
+
+/* ----- Typography ----- */
+
+@mixin text($size) {
+    color: $text-color;
+    font-weight: 500;
+
+    @if $size =='m' {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+}
+
+@mixin heading($size) {
+    color: $heading-color;
+    font-weight: 700;
+
+    @if $size =='sm' {
+        letter-spacing: -0.025em;
+        font-size: 1.3rem;
+    }
+}
+
+/* ----- Margins ----- */
+
+@mixin heading-margin($size) {
+    @if $size =='sm' {
+        margin: 0 0 $heading-margin-sm 0;
+    }
+
+    @if $size =='m' {
+        margin: 0 0 $heading-margin 0;
+    }
+
+    @if $size =='lg' {
+        margin: 0 0 $heading-margin-lg 0;
+    }
+}
+
+@mixin text-margin($size) {
+    @if $size =='sm' {
+        margin: 0 0 $text-margin-sm 0;
+    }
+
+    @if $size =='m' {
+        margin: 0 0 $text-margin 0;
+    }
+
+    @if $size =='lg' {
+        margin: 0 0 $text-margin-lg 0;
+    }
+
+    @if $size =='xl' {
+        margin: 0 0 $text-margin-xl 0;
+    }
+}
+
+/* ----- Layout ----- */
+
+@mixin flex($type, $direction, $gap, $alignment) {
+    display: $type;
+    gap: $gap + rem;
+
+    @if $alignment ==center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    @else {
+        align-items: $alignment;
+    }
+
+    @if $direction ==column {
+        flex-direction: column;
+    }
+
+    @if $direction ==row {
+        flex-direction: row;
+    }
+
+}
+
+/* ----- Shadows ----- */
+
+@mixin shadow($size) {
+    @if $size =='sm' {
+        box-shadow: 0 3px 5px 0 $shadow-color;
+    }
+
+    @if $size =='m' {
+        box-shadow: 3px 5px 8px 0 $shadow-color;
+    }
+
+    @if $size =='lg' {
+        box-shadow: 8px 8px 15px 5px $shadow-color;
+    }
+}
+
+/* ----- Other ----- */
+
+@mixin border() {
+    border: 1px solid $border-color;
+    border-radius: 0.3rem;
+}
+
+@mixin border-radius($type) {
+
+    @if $type =='none' {
+        border-radius: 0;
+    }
+
+    @if $type =='sm' {
+        border-radius: 0.25rem;
+    }
+
+    @if $type =='m' {
+        border-radius: 0.5rem;
+    }
+
+    @if $type =='lg' {
+        border-radius: 1rem;
+    }
+
+    @if $type =='round' {
+        border-radius: 100%;
+    }
+}

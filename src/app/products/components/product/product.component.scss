@@ -1,0 +1,60 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
+:host {
+    height: -webkit-fill-available;
+}
+
+.product {
+    @include flex(flex, column, 0, initial);
+    @include shadow('sm');
+    @include border-radius('m');
+
+    min-width: 16rem;
+    height: 100%;
+    overflow: hidden;
+
+    &__image {
+        max-height: 10rem;
+        min-height: 10rem;
+
+        &[alt] {
+            color: $placeholder-text-color;
+            font-weight: 600;
+            line-height: 10rem;
+
+            min-width: 100%;
+            background-color: $placeholder-background-color;
+        }
+    }
+
+    &__content {
+        height: inherit;
+        @include flex(flex, column, 0, initial);
+        padding: 1rem;
+    }
+
+    &__title {
+        @include heading('sm');
+        @include heading-margin('sm');
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    &__description {
+        @include text('m');
+        @include text-margin('lg');
+    }
+
+    &__tags {
+        height: inherit;
+        @include flex(flex, row, 0.5, end);
+        flex-wrap: wrap;
+        align-content: end;
+    }
+}

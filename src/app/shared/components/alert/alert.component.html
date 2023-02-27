@@ -1,0 +1,11 @@
+<ng-container *ngIf="text">
+  <div class="alert alert--{{ type }}" role="alert">
+    <div class="alert__text">
+      <ng-container *ngIf="showIcon">
+        <span class="alert__icon">&#8505; </span>
+      </ng-container>
+
+      <span>{{ text }}</span>
+    </div>
+  </div>
+</ng-container>

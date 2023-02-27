@@ -1,0 +1,47 @@
+/* ----- Colors ----- */
+
+// General
+$heading-color: #000;
+$text-color: #000;
+$text-light-color: #fff;
+$text-muted-color: #697687;
+$background-secondary-color: #f2f4f7;
+$background-primary-color: #fff;
+
+// Hover
+$background-primary-hover-color: #fafafa;
+
+// Statuses
+$info-color: #70b6f6;
+$success-color: #4ac99b;
+$warning-color: #ffc700;
+$danger-color: #f45725;
+
+$info-background-color: rgba(112, 182, 246, .12);
+$success-background-color: rgba(74, 201, 155, .12);
+$warning-background-color: rgba(255, 199, 0, .12);
+$danger-background-color: rgba(244, 87, 37, .12);
+
+// Placeholder
+$placeholder-text-color: #9e9e9e;
+$placeholder-background-color: #f2f4f7;
+
+// Shadow
+$shadow-color: rgba(0, 0, 0, .1);
+$border-color: #e5e7eb;
+
+
+/* ----- Typography ----- */
+
+$font-primary: 'Open Sans', sans-serif;
+
+/* ----- Margins ----- */
+
+$text-margin-sm: 0.25rem;
+$text-margin: 0.5rem;
+$text-margin-lg: 1.5rem;
+
+$heading-margin-sm: 0.5rem;
+$heading-margin: 1rem;
+$heading-margin-lg: 1.5rem;
+$heading-margin-xl: 2.5rem;

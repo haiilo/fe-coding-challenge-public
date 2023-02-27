@@ -1,0 +1,25 @@
+<ng-container *ngIf="product">
+  <div class="product">
+    <a [href]="product.url">
+      <img class="product__image" [src]="product.image" [alt]="product.title" />
+    </a>
+
+    <div class="product__content">
+      <a [href]="product.url">
+        <h5 class="product__title">{{ product.title }}</h5>
+      </a>
+
+      <p class="product__description">
+        Here are the biggest enterprise technology acquisitions of 2021 so far,
+        in reverse chronological order.
+      </p>
+
+      <div class="product__tags">
+        <app-tag
+          *ngFor="let category of product.categories"
+          [tag]="category"
+        ></app-tag>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,41 @@
+@import '_variables.scss';
+@import '_mixins.scss';
+
+$statuses: (
+    'info'$info-color $info-background-color,
+    'success'$success-color $success-background-color,
+    'warning'$warning-color $warning-background-color,
+    'danger'$danger-color $danger-background-color,
+);
+
+.alert {
+    $self: &;
+
+    display: flex;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    @include border-radius('m');
+
+    &__text {
+        font-weight: 600;
+    }
+
+    &__icon {
+        color: $text-light-color;
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.5rem;
+        @include border-radius('round');
+        @include flex(inline-flex, row, 0, center);
+    }
+
+    @each $name, $fillColor, $backgroundColor in $statuses {
+        &--#{$name} {
+            background-color: $backgroundColor;
+
+            #{$self}__icon {
+                background-color: $fillColor;
+            }
+        }
+    }
+}
