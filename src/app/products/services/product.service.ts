@@ -16,9 +16,9 @@ import { Page, Product } from '../interfaces';
   providedIn: 'root',
 })
 export class ProductService {
-  private static readonly PAGE_SIZE = 12;
-  private static readonly PAGE_COUNT = 4;
-  private static readonly PAGE_ERROR = 0.1;
+  private static PAGE_SIZE = 12;
+  private static PAGE_COUNT = 4;
+  private static PAGE_ERROR = 0.1;
 
   /**
    * Get a page of products.
@@ -46,6 +46,7 @@ export class ProductService {
         : of(res)
       ).pipe(delay(randNumber({ min: 150, max: 1500 })));
     }
+
     return throwError(() => new Error('400 Bad Request'));
   }
 

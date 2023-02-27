@@ -70,7 +70,6 @@ describe('ProductsComponent', () => {
       more: true,
       content: mockedProduct,
     };
-    // const mockedError: Error = { message: 'Test error'};
 
     it('should increment pageNumber correctly', () => {
       expect(component['_pageNumber']).toBe(1);
