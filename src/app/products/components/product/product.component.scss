@@ -36,7 +36,7 @@
 
     &__title {
         @include heading('sm');
-        @include margin('sm');
+        @include margin('m');
 
         @include text-ellipsis('y', 3);
     }
@@ -47,8 +47,8 @@
     }
 
     &__tags {
-        height: inherit;
         @include flex(flex, row, 0.5, flex-end);
         flex-wrap: wrap;
+        margin-top: auto;
     }
 }

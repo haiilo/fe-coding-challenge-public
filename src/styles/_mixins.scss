@@ -34,7 +34,7 @@
     }
 
     @if $size =='m' {
-        margin: 0 0 $margin 0;
+        margin: 0 0 $margin-m 0;
     }
 
     @if $size =='lg' {
