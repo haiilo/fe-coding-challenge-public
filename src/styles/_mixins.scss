@@ -24,35 +24,29 @@
 
 /* ----- Margins ----- */
 
-@mixin heading-margin($size) {
+@mixin margin($size) {
+    @if $size =='xs' {
+        margin: 0 0 $margin-sm 0;
+    }
+
     @if $size =='sm' {
-        margin: 0 0 $heading-margin-sm 0;
+        margin: 0 0 $margin-sm 0;
     }
 
     @if $size =='m' {
-        margin: 0 0 $heading-margin 0;
+        margin: 0 0 $margin 0;
     }
 
     @if $size =='lg' {
-        margin: 0 0 $heading-margin-lg 0;
-    }
-}
-
-@mixin text-margin($size) {
-    @if $size =='sm' {
-        margin: 0 0 $text-margin-sm 0;
-    }
-
-    @if $size =='m' {
-        margin: 0 0 $text-margin 0;
-    }
-
-    @if $size =='lg' {
-        margin: 0 0 $text-margin-lg 0;
+        margin: 0 0 $margin-lg 0;
     }
 
     @if $size =='xl' {
-        margin: 0 0 $text-margin-xl 0;
+        margin: 0 0 $margin-xl 0;
+    }
+
+    @if $size =='xxl' {
+        margin: 0 0 $margin-xl 0;
     }
 }
 

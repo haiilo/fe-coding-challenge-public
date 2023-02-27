@@ -17,6 +17,7 @@
     &__image {
         max-height: 10rem;
         min-height: 10rem;
+        object-fit: cover;
 
         &[alt] {
             color: $placeholder-text-color;
@@ -30,13 +31,13 @@
 
     &__content {
         height: inherit;
-        @include flex(flex, column, 0, initial);
         padding: 1rem;
+        @include flex(flex, column, 0, initial);
     }
 
     &__title {
         @include heading('sm');
-        @include heading-margin('sm');
+        @include margin('sm');
 
         overflow: hidden;
         text-overflow: ellipsis;
@@ -48,13 +49,12 @@
 
     &__description {
         @include text('m');
-        @include text-margin('lg');
+        @include margin('lg');
     }
 
     &__tags {
         height: inherit;
-        @include flex(flex, row, 0.5, end);
+        @include flex(flex, row, 0.5, flex-end);
         flex-wrap: wrap;
-        align-content: end;
     }
 }
