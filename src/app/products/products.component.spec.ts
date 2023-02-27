@@ -1,8 +1,15 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  flush,
+  TestBed,
+  tick
+} from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of, throwError } from 'rxjs';
 import { AlertComponent, TagComponent } from '../shared/components';
+import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 import { PageStatusEnum } from './enums';
 import { Page, Product } from './interfaces';
 import { ProductsComponent } from './products.component';
@@ -15,12 +22,16 @@ describe('ProductsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AlertComponent, TagComponent, BrowserAnimationsModule],
+      imports: [
+        AlertComponent,
+        TagComponent,
+        SpinnerComponent,
+        BrowserAnimationsModule,
+      ],
       declarations: [ProductsComponent],
       providers: [ProductService],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
 
     service = TestBed.inject(ProductService);
     fixture = TestBed.createComponent(ProductsComponent);
@@ -46,14 +57,19 @@ describe('ProductsComponent', () => {
   });
 
   describe('getMore()', () => {
-    const mockedProduct: Product[] = [{
-      url: 'test',
-      title: 'test',
-      description: 'test',
-      image: 'test',
-      categories: ['test'],
-    }];
-    const mockedPagedProduct: Page<Product> = { more: true, content: mockedProduct };
+    const mockedProduct: Product[] = [
+      {
+        url: 'test',
+        title: 'test',
+        description: 'test',
+        image: 'test',
+        categories: ['test'],
+      },
+    ];
+    const mockedPagedProduct: Page<Product> = {
+      more: true,
+      content: mockedProduct,
+    };
     // const mockedError: Error = { message: 'Test error'};
 
     it('should increment pageNumber correctly', () => {
@@ -81,7 +97,9 @@ describe('ProductsComponent', () => {
     it('should update page status correctly on error', fakeAsync(() => {
       expect(component.pageStatus).toBe(PageStatusEnum.Loading);
 
-      spyOn(service, 'get').and.returnValue(throwError(() => new Error('400 Bad Request')));
+      spyOn(service, 'get').and.returnValue(
+        throwError(() => new Error('400 Bad Request'))
+      );
       component.getMore();
 
       // Wait for rxjs retry({ count: 3, delay: 100, resetOnSuccess: true })
