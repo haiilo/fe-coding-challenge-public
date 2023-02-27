@@ -98,6 +98,22 @@
     border-radius: 0.3rem;
 }
 
+@mixin text-ellipsis($direction, $rows) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @if $direction =='x' {
+        white-space: nowrap;
+    }
+
+    @if $direction =='y' {
+        display: -webkit-box;
+        -webkit-line-clamp: $rows;
+        -webkit-box-orient: vertical;
+    }
+
+}
+
 @mixin border-radius($type) {
 
     @if $type =='none' {

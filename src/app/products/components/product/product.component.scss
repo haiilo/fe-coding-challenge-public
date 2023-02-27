@@ -15,8 +15,7 @@
     overflow: hidden;
 
     &__image {
-        max-height: 10rem;
-        min-height: 10rem;
+        height: 10rem;
         object-fit: cover;
 
         &[alt] {
@@ -39,12 +38,7 @@
         @include heading('sm');
         @include margin('sm');
 
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
+        @include text-ellipsis('y', 3);
     }
 
     &__description {

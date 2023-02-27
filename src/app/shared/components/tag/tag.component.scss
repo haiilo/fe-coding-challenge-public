@@ -3,6 +3,7 @@
 
 :host {
     display: inline-block;
+    @include text-ellipsis('x', 1);
 }
 
 .tag {
@@ -10,7 +11,9 @@
     color: $text-muted-color;
     font-size: 0.9rem;
     font-weight: 500;
+    @include text-ellipsis('x', 1);
 
     @include border;
     padding: 0.4rem 0.6rem;
+    margin-top: auto;
 }
