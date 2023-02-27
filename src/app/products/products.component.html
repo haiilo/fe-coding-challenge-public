@@ -12,23 +12,15 @@
   <ng-container [ngSwitch]="pageStatus">
     <!-- Todo: to improve, add spinner + animation  -->
     <ng-container *ngSwitchCase="'loading'">
-      <div class="loader">
-        <app-alert
-          [text]="'Loading...'"
-          [type]="'info'"
-          [showIcon]="true"
-        ></app-alert>
-      </div>
+      <app-spinner></app-spinner>
     </ng-container>
 
     <ng-container *ngSwitchCase="'error'">
-      <div class="alert">
-        <app-alert
-          [text]="pageStatusMessage"
-          [type]="'warning'"
-          [showIcon]="true"
-        ></app-alert>
-      </div>
+      <app-alert
+        [text]="pageStatusMessage"
+        [type]="'warning'"
+        [showIcon]="true"
+      ></app-alert>
     </ng-container>
   </ng-container>
 

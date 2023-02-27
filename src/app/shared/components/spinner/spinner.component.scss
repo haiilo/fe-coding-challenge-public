@@ -1,0 +1,27 @@
+@import '_variables.scss';
+
+.spinner {
+    margin: 1rem auto;
+    width: 5rem;
+    height: 5rem;
+
+    &__inner {
+        width: inherit;
+        height: inherit;
+
+        border-radius: 50%;
+        border: 0.35rem solid $info-color;
+        border-color: $info-color transparent $info-color transparent;
+        animation: dual-ring 1.2s linear infinite;
+    }
+
+    @keyframes dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
