@@ -1,6 +1,26 @@
 <div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
+  <div class="products">
+    <div class="products-list">
+      <a *ngFor="let product of products" [href]="product.url" target="_blank">
+        <app-product-card
+          class="product-card"
+          [product]="product"
+        ></app-product-card>
+      </a>
+    </div>
   </div>
-  <button class="more">Load more</button>
+  <div class="fetch-error" *ngIf="fetchFailed">
+    There was an error fetching data. Please retry
+  </div>
+  <button
+    *ngIf="hasMore; else noMoreContent"
+    class="more"
+    [disabled]="isFetchingData"
+    (click)="onLoadMoreClick()"
+  >
+    Load more
+  </button>
+  <ng-template #noMoreContent>
+    <div class="no-more-products">No more products to show</div>
+  </ng-template>
 </div>

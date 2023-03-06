@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="product-img-wrapper">
+    <div
+      class="product-img"
+      *ngIf="product.image"
+      [style.background]="'url(' + product.image + ')'"
+    ></div>
+  </div>
+
+  <div class="product-content">
+    <div class="product-title">{{ product.title }}</div>
+    <div class="product-desc">
+      <div class="product-desc-content">
+        {{ product.description }}
+      </div>
+    </div>
+    <div class="product-categories">
+      <div *ngFor="let cat of product.categories" class="product-category">
+        {{ cat }}
+      </div>
+    </div>
+  </div>
+</div>

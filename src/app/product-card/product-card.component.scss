@@ -1,0 +1,83 @@
+.content {
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 4px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .product-img-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 25%;
+    background: darkgray;
+
+    .product-img,
+    .product-img-alt {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+
+    .product-img {
+      background-size: cover;
+    }
+  }
+
+  .product-img-alt {
+    background: darkgray;
+  }
+
+  .product-img {
+    // not specified how image should scale / fit. fetched images are square yet the
+    // needed ratio is 2:1. I thought of using a normal img tag for this, but the ratio
+    // plus the fact that the image shouldn't stretch led me to using a background-image
+    // on a normal div as the solution.
+  }
+
+  .product-content {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .product-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .product-desc {
+      flex-grow: 1;
+
+      .product-desc-content {
+        font-size: 16px;
+        margin-top: 22px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    .product-categories {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+
+      .product-category {
+        border: 1px solid lightgray;
+        border-radius: 4px;
+        font-size: 14px;
+        white-space: nowrap;
+        color: gray;
+        padding: 3px 6px;
+      }
+    }
+  }
+}

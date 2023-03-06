@@ -7,10 +7,45 @@
   background-color: #fff;
 }
 
-pre {
-  overflow: auto;
-  background-color: #f2f4f7;
-  padding: 1rem;
+.products-list {
+  display: grid;
+  grid-column-gap: 22px;
+  grid-row-gap: 26px;
+  //grid-template-columns: 1fr 1fr 1fr 1fr; // would normally use this
+  grid-template-columns: 24% 24% 24% 24%;
+
+  @media (max-width: 1800px) {
+    grid-template-columns: 32% 32% 32%;
+  }
+
+  @media (max-width: 1400px) {
+    grid-template-columns: 48% 48%;
+  }
+
+  @media (max-width: 1000px) {
+    grid-template-columns: auto;
+  }
+
+  a {
+    text-decoration: none;
+    color: initial;
+
+    .product-card {
+      min-width: 16rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.no-more-products,
+.fetch-error {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.fetch-error {
+  color: red;
 }
 
 .more {
