@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Page } from './products/page';
+
 import { Product } from './products/product';
 import { ProductService } from './products/product.service';
 
@@ -32,7 +31,7 @@ export class AppComponent implements OnInit {
     this.loadData();
   }
 
-  private loadData(retriesLeft = 3) {
+  loadData(retriesLeft = 3) {
     // I would implement a retrying at the service level but the instructions said
     // that shouldn't be changed, so it will just have to be improvised here
     this.isFetchingData = true;
