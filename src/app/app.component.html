@@ -1,6 +1,24 @@
 <div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
+  <div *ngIf="products$ | async; let products; else elseTemplate">
+    <!--<pre *ngFor="let product of products.content">{{ product | json }}</pre>-->
+    <div class="products">
+      <div *ngFor="let product of products.content" (click)="goToLink(product.url)">
+        <div class="imageWrapper"><img src="{{product.image}}" /></div>
+        <div class="content">
+          <h2>{{product.title}}</h2>
+          <div class="description"><div class="ellipsis">{{product.description}}</div></div>
+          
+        </div>
+        <div class="categoriesWrapper"><span *ngFor="let category of product.categories">{{category}}</span></div>
+      </div>
+    </div>
+    
+    <button class="more" type="submit" (click)="loadMore();" *ngIf="products.more" [disabled]="loading$" >
+      <span *ngIf="!loading$">Load more</span><span *ngIf="loading$">Loading items...</span></button>
   </div>
-  <button class="more">Load more</button>
+  <ng-template #elseTemplate>
+    <div class="error">An error has occured. Please reload the list.</div>
+    <button class="more" (click)="refresh();" >Reload</button>
+  </ng-template>
+  
 </div>
