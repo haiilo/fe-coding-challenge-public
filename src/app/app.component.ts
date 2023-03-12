@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject, catchError, merge, Observable, of, scan, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, catchError, finalize, Observable, of, scan, switchMap, tap } from 'rxjs';
 import { Page } from './products/page';
 import { Product } from './products/product';
 import { ProductService } from './products/product.service';
@@ -14,42 +14,37 @@ export class AppComponent {
 
   // readonly products$: Observable<Page<Product>> = this.productService.get(0);
 
-  public currentPage$ = new BehaviorSubject<number>(1);
-  private _initList: Page<Product> = { more: true,  content: []};
-  private initialList$ = of(this._initList);
+  public errorMsg: string = "Loading items failed.";
+  public isError: boolean = false;
+  public isLoading: boolean = false;
 
-  public productUpdate$ = this.currentPage$.pipe(
-    tap(x=>{
-      this.changeLoading();
-    }),
-    switchMap((currentPage)=> this.productService.get(currentPage))
-      
+  public currentPage$ = new BehaviorSubject<number>(1);  
+
+  readonly products$ = this.currentPage$.pipe(
+    tap(() => this.isLoading = true),
+    switchMap((currentPage) => this.getData(currentPage)),
+    scan((acc, value) => { return { more: value.more, content: acc.content.concat(value.content) }})
   );
 
-  public loading$: boolean = false;
-  private changeLoading = ():boolean => this.loading$ = !this.loading$;
-  // Merge the streams
-  public products$ = merge(
-      this.productUpdate$,
-      this.initialList$
-    ).pipe(
-        // this.changeLoading(),
-        scan((acc, value) => { 
-          this.changeLoading();
-          return {more: acc.more && value.more, content: acc.content.concat(value.content)}}),
-        
-      );
+  private getData = (currentPage: number): Observable<Page<Product>> => this.productService.get(currentPage).pipe(
+    tap(() => this.isError = false),
+    finalize(() => this.isLoading = false),
+    catchError(err => this.errorHandling(err))
+  );
 
-  public loadMore = ():void  => {
-    this.currentPage$.next(this.currentPage$.value + 1); 
+  private errorHandling = (err: any): Observable<Page<Product>> => {
+    console.error(err);
+    this.isError = true;              
+    return of();
+  } 
+
+  public loadMore = (): void => {
+    if(this.isError) {
+      this.currentPage$.next(this.currentPage$.value); 
+    } else {
+      this.currentPage$.next(this.currentPage$.value + 1); 
+    }
   }
-
-  public refresh(): void {
-    window.location.reload();
-  }
-
-  public goToLink(url: string): void {
-    window.open(url, "_blank");
-}
-
+// router
+  public goToLink = (url: string): void => { window.open(url, "_blank") };
 }

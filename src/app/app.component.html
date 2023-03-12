@@ -1,5 +1,6 @@
 <div class="stage">
-  <div *ngIf="products$ | async; let products; else elseTemplate">
+  
+  <div *ngIf="products$ | async; let products; ; else loading">
     <!--<pre *ngFor="let product of products.content">{{ product | json }}</pre>-->
     <div class="products">
       <div *ngFor="let product of products.content" (click)="goToLink(product.url)">
@@ -12,13 +13,17 @@
         <div class="categoriesWrapper"><span *ngFor="let category of product.categories">{{category}}</span></div>
       </div>
     </div>
-    
-    <button class="more" type="submit" (click)="loadMore();" *ngIf="products.more" [disabled]="loading$" >
-      <span *ngIf="!loading$">Load more</span><span *ngIf="loading$">Loading items...</span></button>
+    <div class="messageWrapper error"><span *ngIf="isError">{{errorMsg}}</span></div>
+    <button class="more tpbs" type="submit" (click)="loadMore();" *ngIf="products.more"  >
+      <span *ngIf="!isLoading">Load more</span><span *ngIf="isLoading">Loading items...</span>
+    </button>
+   
   </div>
-  <ng-template #elseTemplate>
-    <div class="error">An error has occured. Please reload the list.</div>
-    <button class="more" (click)="refresh();" >Reload</button>
-  </ng-template>
+  <ng-template #loading>
+    <div class="messageWrapper error"><span *ngIf="isError">{{errorMsg}}</span></div>
+    <button class="more" type="submit" (click)="loadMore();" >
+      <span *ngIf="!isLoading">Retry</span><span *ngIf="isLoading">Loading items...</span>
+    </button>
+  </ng-template>   
   
 </div>
