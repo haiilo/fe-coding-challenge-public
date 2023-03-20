@@ -1,0 +1,1 @@
+npm install command should be ran before testing;

@@ -1,6 +1,8 @@
-<div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
+<!-- <div class="stage"> -->
+  <!-- <div class="products" *ngIf="products$ | async; let products">
     <pre *ngFor="let product of products.content">{{ product | json }}</pre>
   </div>
-  <button class="more">Load more</button>
-</div>
+  <button class="more">Load more</button> -->
+  <app-cards></app-cards>
+  <ngx-spinner></ngx-spinner>
+<!-- </div> -->
