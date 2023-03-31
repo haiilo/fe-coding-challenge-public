@@ -1,0 +1,112 @@
+{
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"name": "host",
+	"prefix": "fe-coding-challenge",
+	"projectType": "application",
+	"sourceRoot": "apps/host/src",
+	"tags": [],
+	"targets": {
+		"build": {
+			"configurations": {
+				"development": {
+					"buildOptimizer": false,
+					"extractLicenses": false,
+					"namedChunks": true,
+					"optimization": false,
+					"sourceMap": true,
+					"vendorChunk": true
+				},
+				"production": {
+					"budgets": [
+						{
+							"maximumError": "1mb",
+							"maximumWarning": "500kb",
+							"type": "initial"
+						},
+						{
+							"maximumError": "4kb",
+							"maximumWarning": "2kb",
+							"type": "anyComponentStyle"
+						}
+					],
+					"customWebpackConfig": {
+						"path": "apps/host/webpack.prod.config.js"
+					},
+					"outputHashing": "all"
+				}
+			},
+			"defaultConfiguration": "production",
+			"executor": "@nrwl/angular:webpack-browser",
+			"options": {
+				"assets": [
+					"apps/host/src/assets",
+					"apps/host/src/favicon.ico",
+					{
+						"glob": "**/*",
+						"input": "./libs/common/assets/",
+						"output": "./assets"
+					}
+				],
+				"customWebpackConfig": {
+					"path": "apps/host/webpack.config.js"
+				},
+				"index": "apps/host/src/index.html",
+				"inlineStyleLanguage": "scss",
+				"main": "apps/host/src/main.ts",
+				"outputPath": "dist/apps/host",
+				"polyfills": ["zone.js"],
+				"scripts": [],
+				"stylePreprocessorOptions": {
+					"includePaths": [
+						"libs/common/assets",
+						"libs/common/ui/styles/src/lib"
+					]
+				},
+				"styles": ["apps/host/src/styles.scss"],
+				"tsConfig": "apps/host/tsconfig.app.json"
+			},
+			"outputs": ["{options.outputPath}"]
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"apps/host/**/*.html",
+					"apps/host/**/*.json",
+					"apps/host/**/*.ts"
+				]
+			},
+			"outputs": ["{options.outputFile}"]
+		},
+		"serve": {
+			"configurations": {
+				"development": {
+					"browserTarget": "host:build:development"
+				},
+				"production": {
+					"browserTarget": "host:build:production"
+				}
+			},
+			"defaultConfiguration": "development",
+			"executor": "@nrwl/angular:module-federation-dev-server",
+			"options": {
+				"port": 4200,
+				"publicHost": "http://localhost:4200"
+			}
+		},
+		"test": {
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			},
+			"executor": "@nrwl/jest:jest",
+			"options": {
+				"jestConfig": "apps/host/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"]
+		}
+	}
+}

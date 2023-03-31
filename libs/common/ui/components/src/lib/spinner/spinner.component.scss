@@ -1,0 +1,27 @@
+:host {
+	color: var(--color-stroke);
+	display: flex;
+	height: 3rem;
+	width: 3rem;
+
+	&::after {
+		animation: dual-ring 1000ms linear infinite;
+		border-color: currentcolor transparent;
+		border-radius: 50%;
+		border-style: solid;
+		border-width: 0.25rem;
+		content: '';
+		height: 100%;
+		width: 100%;
+	}
+}
+
+@keyframes dual-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

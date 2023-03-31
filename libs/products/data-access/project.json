@@ -1,0 +1,35 @@
+{
+	"$schema": "../../../node_modules/nx/schemas/project-schema.json",
+	"name": "products-data-access",
+	"prefix": "fe-coding-challenge",
+	"projectType": "library",
+	"sourceRoot": "libs/products/data-access/src",
+	"tags": [],
+	"targets": {
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"libs/products/data-access/**/*.html",
+					"libs/products/data-access/**/*.json",
+					"libs/products/data-access/**/*.ts"
+				]
+			},
+			"outputs": ["{options.outputFile}"]
+		},
+		"test": {
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			},
+			"executor": "@nrwl/jest:jest",
+			"options": {
+				"jestConfig": "libs/products/data-access/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"]
+		}
+	}
+}

@@ -1,0 +1,19 @@
+:host {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.core-shell {
+	&__content {
+		background: var(--color-background-panel);
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		margin: 0 auto;
+		max-width: 87.5rem;
+		min-width: 24rem;
+		padding: 4rem;
+		width: 50%;
+	}
+}

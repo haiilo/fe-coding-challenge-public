@@ -1,0 +1,36 @@
+@use 'styles/tools/functions' as functions;
+
+.button {
+	align-items: center;
+	background: var(--color-secondary);
+	border: var(--border-size) solid currentcolor;
+	border-radius: var(--border-radius);
+	color: var(--color-text);
+	cursor: pointer;
+	display: flex;
+	font-weight: 700;
+	gap: 0.5rem;
+	justify-content: center;
+	padding: 1rem 2rem;
+	transition: functions.get-transition();
+
+	&:hover,
+	&:focus {
+		background: var(--color-secondary-hover);
+	}
+
+	&:active {
+		background: var(--color-secondary-active);
+	}
+
+	&--disabled {
+		cursor: not-allowed;
+		opacity: 0.6;
+	}
+
+	&__loading {
+		color: inherit !important;
+		height: 1rem !important;
+		width: 1rem !important;
+	}
+}

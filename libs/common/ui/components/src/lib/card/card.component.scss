@@ -1,0 +1,55 @@
+:host {
+	border-radius: var(--border-radius);
+	box-shadow: rgba(0, 0, 0, 0.16) 0 0.125rem 0.25rem;
+	display: flex;
+	flex-direction: column;
+	min-width: 16rem;
+	overflow: hidden;
+}
+
+.card {
+	&__header {
+		background: var(--color-stroke);
+		display: flex;
+		overflow: hidden;
+
+		> * {
+			aspect-ratio: 2/1;
+			flex: 1;
+			object-fit: cover;
+			overflow: hidden;
+		}
+	}
+
+	&__content {
+		display: grid;
+		flex: 1;
+		gap: 1rem;
+		grid-template-rows: auto 1fr auto;
+		padding: 1rem;
+	}
+
+	&__title {
+		font-weight: 600;
+	}
+
+	&__description {
+		align-self: flex-start;
+		-webkit-box-orient: vertical;
+		display: -webkit-box; // stylelint-disable-line value-no-vendor-prefix
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+		overflow-wrap: anywhere;
+		text-overflow: ellipsis;
+	}
+
+	&__details {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+
+		&:empty {
+			display: none;
+		}
+	}
+}

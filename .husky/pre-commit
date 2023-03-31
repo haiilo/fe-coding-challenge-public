@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "---------- 0/2 ----------"
+
+echo "🎨 Prettify code!"
+npm run pretty-quick
+
+echo "---------- 1/2 ----------"
+
+echo "🔬 Linting code!"
+npm run lint
+
+echo "---------- 2/2 ----------"

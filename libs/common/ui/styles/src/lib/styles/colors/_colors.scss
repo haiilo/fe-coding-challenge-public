@@ -1,0 +1,17 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'settings' as settings;
+
+.theme {
+	@each $theme, $config in settings.$themes {
+		&--#{$theme} {
+			@each $colorName, $colorValue in $config {
+				--color-#{$colorName}: #{$colorValue};
+			}
+		}
+	}
+}
+
+:root {
+	@extend .theme--#{list.nth(map.keys(settings.$themes), 1)}; // stylelint-disable-line scss/at-extend-no-missing-placeholder
+}

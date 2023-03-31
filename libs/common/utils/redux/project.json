@@ -1,0 +1,35 @@
+{
+	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+	"name": "common-utils-redux",
+	"prefix": "fe-coding-challenge",
+	"projectType": "library",
+	"sourceRoot": "libs/common/utils/redux/src",
+	"tags": [],
+	"targets": {
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"libs/common/utils/redux/**/*.html",
+					"libs/common/utils/redux/**/*.json",
+					"libs/common/utils/redux/**/*.ts"
+				]
+			},
+			"outputs": ["{options.outputFile}"]
+		},
+		"test": {
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			},
+			"executor": "@nrwl/jest:jest",
+			"options": {
+				"jestConfig": "libs/common/utils/redux/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"]
+		}
+	}
+}

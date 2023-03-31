@@ -1,0 +1,57 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": ".",
+		"declaration": false,
+		"emitDecoratorMetadata": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"lib": ["ES2019", "dom"],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noUnusedParameters": true,
+		"paths": {
+			"@fe-coding-challenge/common/types": ["libs/common/types/src/index.ts"],
+			"@fe-coding-challenge/common/ui/components": [
+				"libs/common/ui/components/src/index.ts"
+			],
+			"@fe-coding-challenge/common/utils/helpers": [
+				"libs/common/utils/helpers/src/index.ts"
+			],
+			"@fe-coding-challenge/common/utils/interceptors": [
+				"libs/common/utils/interceptors/src/index.ts"
+			],
+			"@fe-coding-challenge/common/utils/redux": [
+				"libs/common/utils/redux/src/index.ts"
+			],
+			"@fe-coding-challenge/core/feature": ["libs/core/feature/src/index.ts"],
+			"@fe-coding-challenge/products/data-access": [
+				"libs/products/data-access/src/index.ts"
+			],
+			"@fe-coding-challenge/products/feature": [
+				"libs/products/feature/src/index.ts"
+			],
+			"@fe-coding-challenge/products/types": [
+				"libs/products/types/src/index.ts"
+			]
+		},
+		"resolveJsonModule": true,
+		"rootDir": ".",
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"strictBindCallApply": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": false,
+		"target": "ES2022",
+		"useDefineForClassFields": false,
+		"useUnknownInCatchVariables": true
+	},
+	"exclude": ["node_modules", "tmp"]
+}

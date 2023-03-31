@@ -1,0 +1,76 @@
+{
+	"$schema": "./node_modules/nx/schemas/nx-schema.json",
+	"generators": {
+		"@nrwl/angular:application": {
+			"style": "scss",
+			"linter": "eslint",
+			"unitTestRunner": "jest",
+			"e2eTestRunner": "none",
+			"standalone": true
+		},
+		"@nrwl/angular:component": {
+			"style": "scss",
+			"standalone": true
+		},
+		"@nrwl/angular:host": {
+			"dynamic": true,
+			"e2eTestRunner": "none",
+			"standalone": true,
+			"style": "scss"
+		},
+		"@nrwl/angular:library": {
+			"linter": "eslint",
+			"unitTestRunner": "jest",
+			"standalone": true,
+			"style": "scss"
+		},
+		"@nrwl/angular:ngrx": {
+			"directory": "data-access/+state",
+			"minimal": false
+		},
+		"@nrwl/angular:remote": {
+			"e2eTestRunner": "none",
+			"standalone": true,
+			"style": "scss"
+		}
+	},
+	"npmScope": "fe-coding-challenge",
+	"namedInputs": {
+		"default": ["{projectRoot}/**/*", "sharedGlobals"],
+		"production": [
+			"default",
+			"!{projectRoot}/.eslintrc.json",
+			"!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+			"!{projectRoot}/jest.config.[jt]s",
+			"!{projectRoot}/tsconfig.spec.json"
+		],
+		"sharedGlobals": []
+	},
+	"targetDefaults": {
+		"build": {
+			"dependsOn": ["^build"],
+			"inputs": ["production", "^production"]
+		},
+		"e2e": {
+			"inputs": ["default", "^production"]
+		},
+		"lint": {
+			"inputs": [
+				"default",
+				"{workspaceRoot}/.eslintrc.json",
+				"{workspaceRoot}/.eslintignore"
+			]
+		},
+		"test": {
+			"inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+		}
+	},
+	"tasksRunnerOptions": {
+		"default": {
+			"runner": "nx/tasks-runners/default",
+			"options": {
+				"cacheableOperations": ["build", "lint", "test", "e2e"]
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+<header class="card__header">
+	<img
+		[alt]="title.length ? title : ''"
+		[src]="imageSrc?.length ? imageSrc : 'assets/images/image-placeholder.png'"
+	/>
+</header>
+
+<main class="card__content">
+	<h4 class="card__title">
+		<ng-container *ngIf="title?.length; else showCustomTitle">
+			{{ title }}
+		</ng-container>
+		<ng-template #showCustomTitle>
+			<ng-content select="[cardTitle]"></ng-content>
+		</ng-template>
+	</h4>
+
+	<p class="card__description">
+		<ng-container *ngIf="description?.length; else showCustomDescription">
+			{{ description }}
+		</ng-container>
+		<ng-template #showCustomDescription>
+			<ng-content select="[cardDescription]"></ng-content>
+		</ng-template>
+		<ng-content select="[cardDescription]"></ng-content>
+	</p>
+
+	<div class="card__details">
+		<ng-content select="[cardDetails]"></ng-content>
+	</div>
+</main>

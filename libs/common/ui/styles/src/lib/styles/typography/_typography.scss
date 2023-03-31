@@ -1,0 +1,45 @@
+@use 'sass:map';
+@use 'settings' as settings;
+@use '../tools/functions' as functions;
+
+html {
+	font-size: 16px; // stylelint-disable-line unit-allowed-list
+}
+
+body {
+	color: var(--color-text);
+	font: normal 0.875rem/ 1.25 var(--font-brand); // stylelint-disable-line font-weight-notation
+}
+
+:root {
+	@each $type, $families in settings.$fonts {
+		--font-#{$type}: #{$families};
+	}
+}
+
+@each $type, $config in settings.$configs {
+	#{$type} {
+		font-size: map.get($config, size);
+
+		@if map-has-key($config, line-height) {
+			line-height: map.get($config, line-height);
+		}
+	}
+}
+
+a {
+	color: var(--color-primary);
+	cursor: pointer;
+	font-weight: 700;
+	text-decoration: none;
+	transition: functions.get-transition();
+	width: fit-content;
+
+	&:hover {
+		color: var(--color-primary-hover);
+	}
+
+	&:active {
+		color: var(--color-primary-active);
+	}
+}

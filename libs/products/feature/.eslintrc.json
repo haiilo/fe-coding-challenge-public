@@ -1,0 +1,40 @@
+{
+	"extends": ["../../../.eslintrc.json"],
+	"ignorePatterns": ["!**/*"],
+	"overrides": [
+		{
+			"extends": [
+				"plugin:@angular-eslint/template/process-inline-templates",
+				"plugin:@nrwl/nx/angular"
+			],
+			"files": ["*.ts"],
+			"parserOptions": {
+				"project": ["libs/products/feature/tsconfig.*?.json"]
+			},
+			"rules": {
+				"@angular-eslint/component-selector": [
+					"error",
+					{
+						"prefix": "fe-coding-challenge",
+						"style": "kebab-case",
+						"type": "element"
+					}
+				],
+				"@angular-eslint/directive-selector": [
+					"error",
+					{
+						"prefix": "feCodingChallenge",
+						"style": "camelCase",
+						"type": "attribute"
+					}
+				],
+				"@typescript-eslint/no-inferrable-types": "off"
+			}
+		},
+		{
+			"extends": ["plugin:@nrwl/nx/angular-template"],
+			"files": ["*.html"],
+			"rules": {}
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"$schema": "../../../node_modules/nx/schemas/project-schema.json",
+	"name": "common-types",
+	"prefix": "fe-coding-challenge",
+	"projectType": "library",
+	"sourceRoot": "libs/common/types/src",
+	"tags": [],
+	"targets": {
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"libs/common/types/**/*.html",
+					"libs/common/types/**/*.json",
+					"libs/common/types/**/*.ts"
+				]
+			},
+			"outputs": ["{options.outputFile}"]
+		}
+	}
+}

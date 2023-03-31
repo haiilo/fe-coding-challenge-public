@@ -1,0 +1,23 @@
+{
+	"angular.enable-strict-mode-prompt": false,
+	"cSpell.words": [
+		"argumentless",
+		"blockless",
+		"commitlint",
+		"Constantin",
+		"falso",
+		"inputtext",
+		"liga",
+		"Maftei",
+		"ngneat",
+		"nonconstructor",
+		"openapi",
+		"openapitools",
+		"postgenerate",
+		"Serializability",
+		"stylelintcache",
+		"therobertmaftei",
+		"unspaced"
+	],
+	"eslint.validate": ["json", "jsonc", "json5"]
+}

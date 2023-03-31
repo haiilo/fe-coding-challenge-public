@@ -1,42 +1,71 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+# API generated files
+libs/api/src/lib/*
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# Applications
+*.app
+*.exe
+*.war
+
+# Compiled output
+*.class
+*.py[cod]
+/out-tsc
+dist
+target/
+tmp
+
+# Dependencies
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+.yarn
+node_modules
 
 # IDEs and editors
-.idea/
-.project
-.classpath
 .c9/
-*.launch
+.classpath
+.project
 .settings/
+*.launch
 *.sublime-workspace
+/.idea
 
-# Visual Studio Code
+# IDE - VSCode
 .vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
 !.vscode/settings.json
 !.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
+# Misc
+.angular
+.eslintcache
+.stylelintcache
+*.jar
+*.log
+/.sass-cache
 /connect.lock
 /coverage
-/libpeerconnection.log
-testem.log
 /typings
 
-# System files
+# Sonarqube
+.scannerwork
+
+# System Files
 .DS_Store
+TEST*.xml
 Thumbs.db

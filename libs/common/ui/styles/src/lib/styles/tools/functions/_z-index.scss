@@ -1,0 +1,26 @@
+@use 'sass:map';
+
+$z-indexes: (
+	below-all: -9999,
+	below: -1,
+	default: 0,
+	above: 1,
+	above-all: 9999,
+);
+
+/// Access z-indexes.
+///
+/// @access public
+///
+/// @param {String} $zIndexName - The needed z-index.
+///
+/// @require {Variable} $zIndexes - A list of all available z-indexes. If the provided `$zIndexName` is not in this list, an error will be prompted.
+///
+/// @return {Number} z-index for the specified `$zIndexName`.
+@function get-z-index($zIndexName: standard) {
+	@if not map.has-key($z-indexes, $zIndexName) {
+		@error 'z-index `#{$zIndexName}` not available.';
+	}
+
+	@return map.get($z-indexes, $zIndexName);
+}

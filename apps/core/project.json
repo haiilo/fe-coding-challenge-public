@@ -1,0 +1,128 @@
+{
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"name": "core",
+	"prefix": "fe-coding-challenge",
+	"projectType": "application",
+	"sourceRoot": "apps/core/src",
+	"tags": [],
+	"targets": {
+		"build": {
+			"configurations": {
+				"development": {
+					"buildOptimizer": false,
+					"extractLicenses": false,
+					"namedChunks": true,
+					"optimization": false,
+					"sourceMap": true,
+					"vendorChunk": true
+				},
+				"production": {
+					"budgets": [
+						{
+							"maximumError": "1mb",
+							"maximumWarning": "500kb",
+							"type": "initial"
+						},
+						{
+							"maximumError": "4kb",
+							"maximumWarning": "2kb",
+							"type": "anyComponentStyle"
+						}
+					],
+					"customWebpackConfig": {
+						"path": "apps/core/webpack.prod.config.js"
+					},
+					"outputHashing": "all"
+				}
+			},
+			"defaultConfiguration": "production",
+			"executor": "@nrwl/angular:webpack-browser",
+			"options": {
+				"assets": [
+					"apps/core/src/assets",
+					"apps/core/src/favicon.ico",
+					{
+						"glob": "**/*",
+						"input": "./libs/common/assets/",
+						"output": "./assets"
+					}
+				],
+				"customWebpackConfig": {
+					"path": "apps/core/webpack.config.js"
+				},
+				"index": "apps/core/src/index.html",
+				"inlineStyleLanguage": "scss",
+				"main": "apps/core/src/main.ts",
+				"outputPath": "dist/apps/core",
+				"polyfills": ["zone.js"],
+				"scripts": [],
+				"stylePreprocessorOptions": {
+					"includePaths": [
+						"libs/common/assets",
+						"libs/common/ui/styles/src/lib"
+					]
+				},
+				"styles": ["apps/core/src/styles.scss"],
+				"tsConfig": "apps/core/tsconfig.app.json"
+			},
+			"outputs": ["{options.outputPath}"]
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"apps/core/**/*.html",
+					"apps/core/**/*.json",
+					"apps/core/**/*.ts"
+				]
+			},
+			"outputs": ["{options.outputFile}"]
+		},
+		"serve": {
+			"configurations": {
+				"development": {
+					"browserTarget": "core:build:development"
+				},
+				"production": {
+					"browserTarget": "core:build:production"
+				}
+			},
+			"defaultConfiguration": "development",
+			"executor": "@nrwl/angular:webpack-dev-server",
+			"options": {
+				"port": 4201,
+				"publicHost": "http://localhost:4201"
+			}
+		},
+		"serve-static": {
+			"configurations": {
+				"development": {
+					"buildTarget": "core:build:development"
+				},
+				"production": {
+					"buildTarget": "core:build:production"
+				}
+			},
+			"defaultConfiguration": "development",
+			"executor": "@nrwl/angular:file-server",
+			"options": {
+				"buildTarget": "core:build",
+				"port": 4201
+			}
+		},
+		"test": {
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			},
+			"executor": "@nrwl/jest:jest",
+			"options": {
+				"jestConfig": "apps/core/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"]
+		}
+	}
+}

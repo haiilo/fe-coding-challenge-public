@@ -1,0 +1,35 @@
+{
+	"$schema": "../../../node_modules/nx/schemas/project-schema.json",
+	"name": "products-feature",
+	"prefix": "fe-coding-challenge",
+	"projectType": "library",
+	"sourceRoot": "libs/products/feature/src",
+	"tags": [],
+	"targets": {
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"libs/products/feature/**/*.html",
+					"libs/products/feature/**/*.json",
+					"libs/products/feature/**/*.ts"
+				]
+			},
+			"outputs": ["{options.outputFile}"]
+		},
+		"test": {
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			},
+			"executor": "@nrwl/jest:jest",
+			"options": {
+				"jestConfig": "libs/products/feature/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"]
+		}
+	}
+}

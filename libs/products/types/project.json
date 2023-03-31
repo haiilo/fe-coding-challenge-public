@@ -1,0 +1,21 @@
+{
+	"$schema": "../../../node_modules/nx/schemas/project-schema.json",
+	"name": "products-types",
+	"prefix": "fe-coding-challenge",
+	"projectType": "library",
+	"sourceRoot": "libs/products/types/src",
+	"tags": [],
+	"targets": {
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"libs/products/types/**/*.html",
+					"libs/products/types/**/*.json",
+					"libs/products/types/**/*.ts"
+				]
+			},
+			"outputs": ["{options.outputFile}"]
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+	"name": "common-ui-components",
+	"prefix": "fe-coding-challenge",
+	"projectType": "library",
+	"sourceRoot": "libs/common/ui/components/src",
+	"tags": [],
+	"targets": {
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"libs/common/ui/components/**/*.html",
+					"libs/common/ui/components/**/*.json",
+					"libs/common/ui/components/**/*.ts"
+				]
+			},
+			"outputs": ["{options.outputFile}"]
+		},
+		"test": {
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			},
+			"executor": "@nrwl/jest:jest",
+			"options": {
+				"jestConfig": "libs/common/ui/components/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"]
+		}
+	}
+}
