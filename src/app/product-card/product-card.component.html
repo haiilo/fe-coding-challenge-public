@@ -1,0 +1,14 @@
+<div (click)="goToUrl(product.url)" class="product">
+  <div class="thumbnail">
+    <img [src]="product.image" (error)="handleMissingImage($event)" [alt]="product.title" class="img-fluid" />
+  </div>
+
+  <div class="card-content">
+    <h2 class="card-title">{{ product.title }}</h2>
+    <p class="card-desc">{{ product.description }}</p>
+  </div>
+
+  <div class="categories">
+    <a href="#" class="text-secondary" *ngFor="let category of product.categories">{{ category }}</a>
+  </div>
+</div>

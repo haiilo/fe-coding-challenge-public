@@ -56,7 +56,7 @@ export class ProductService {
       title: randProductName(),
       description: randProductDescription(),
       image: this.randBooleanWeighted(0.8)
-        ? `https://picsum.photos/id/${randNumber({ max: 1000 })}/400/400`
+        ? `https://picsum.photos/id/${randNumber({ max: 1000 })}/800/400`
         : null,
       categories: Array.from({ length: randNumber({ max: 5 }) }, () => randProductCategory())
     }));

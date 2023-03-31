@@ -1,22 +1,24 @@
-.stage {
-  width: 50%;
-  min-width: 360px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 4rem;
-  background-color: #fff;
-}
+[class*=col-] {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+} 
 
-pre {
-  overflow: auto;
-  background-color: #f2f4f7;
-  padding: 1rem;
+app-product-card {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #d7dbe0;
+  border-radius: 10px;
+  overflow-y: hidden;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.11) 0px 1px 2px;
 }
 
 .more {
   font: inherit;
   display: block;
-  margin: 4rem auto 0;
+  margin: 3rem auto 0;
   border: 1px solid #d7dbe0;
   border-radius: .25rem;
   padding: 1rem 2rem;
@@ -27,3 +29,38 @@ pre {
     background-color: #ebecf0;
   }
 }
+
+.error-msg {
+  max-width: 480px;
+}
+
+// Spinner
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  height: 60px;
+ 
+  span {
+    display: inline-block;
+    border: 5px solid #cbcbcb;
+    border-radius: 50%;
+    border-top: 5px solid transparent;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+}
+
