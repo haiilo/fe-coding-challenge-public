@@ -1,3 +1,7 @@
+.products-container {
+  padding-top: 86px;
+}
+
 [class*=col-] {
   display: flex;
   flex-direction: column;
@@ -35,7 +39,7 @@ app-product-card {
   position: fixed;
   top: 10px;
   right: 10px;
-  z-index: 2;
+  z-index: 1031;
 }
 
 // Spinner
