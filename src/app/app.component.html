@@ -11,12 +11,12 @@
     <span></span>
   </div>
 
-  <div *ngIf="isError" class="mx-auto mb-0  error-msg text-center alert alert-danger alert-dismissible">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    {{ errorMsg }}
-  </div>
-
   <div *ngIf="more">
     <button *ngIf="!isLoading" class="more" (click)="loadMore()">Load more</button>
   </div>
+</div>
+
+<div *ngIf="isError" class="error-msg shadow-5 text-center alert alert-danger alert-dismissible">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  {{ errorMsg }}
 </div>
