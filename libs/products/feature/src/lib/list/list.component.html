@@ -2,24 +2,31 @@
 	<fe-coding-challenge-spinner
 		*ngIf="!data.data?.length && data.isLoading; else showData"
 		class="products-list__content__loading"
+		data-qa="productsListLoading"
 	></fe-coding-challenge-spinner>
 	<ng-template #showData>
 		<fe-coding-challenge-card
 			*ngFor="let product of data.data; trackBy: uniqueIdentifier"
 			[attr.aria-label]="product.title"
+			[attr.data-qa]="'productsListProductCard-' + product.id"
 			[description]="product.description"
 			[imageSrc]="product.image"
 			[title]="product.title"
 			(click)="openItem($event, product.url)"
 		>
 			<ng-container cardDetails>
-				<fe-coding-challenge-chip *ngFor="let category of product.categories">
+				<fe-coding-challenge-chip
+					*ngFor="let category of product.categories"
+					[attr.data-qa]="'productsListProductCardCategory-' + category"
+				>
 					{{ category | titlecase }}
 				</fe-coding-challenge-chip>
 			</ng-container>
 		</fe-coding-challenge-card>
 
-		<h3 *ngIf="data.error">{{ data.error }}</h3>
+		<h3 *ngIf="data.error" data-qa="productsListError">
+			{{ data.error }}
+		</h3>
 	</ng-template>
 </main>
 
@@ -30,6 +37,7 @@
 	(click)="loadMore($event)"
 	aria-label="Load more"
 	class="products-list__action"
+	data-qa="productsListLoadMoreButton"
 	feCodingChallengeButton
 	type="button"
 >

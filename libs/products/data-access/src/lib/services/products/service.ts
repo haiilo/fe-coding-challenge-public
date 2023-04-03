@@ -32,7 +32,10 @@ export class ProductsService {
 	public get(page: number): Observable<Page<Product>> {
 		let res: Page<Product> | undefined;
 		if (page > this.PAGE_COUNT) {
-			res = { content: [], more: false };
+			res = {
+				content: [],
+				more: false,
+			};
 		} else if (page === this.PAGE_COUNT) {
 			res = {
 				content: this.getContent(

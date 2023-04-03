@@ -1,7 +1,8 @@
-import { type HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+import type { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProductsFacade } from '@fe-coding-challenge/products/data-access';
 import { combineLatest, map, type Observable } from 'rxjs';
+import { ERROR_MESSAGES } from './list.constants';
 import type { LatestCombinedData, ListData } from './list.types';
 
 @Injectable()
@@ -27,11 +28,10 @@ export class ListService {
 	}
 
 	private getErrorMessage(error: HttpErrorResponse | null): string | undefined {
-		switch (error?.status) {
-			case HttpStatusCode.InternalServerError:
-				return "We have a problem! It's not you, it's us.\nTry getting new data by pressing below button or refreshing page! 💡";
-			default:
-				return;
+		if (!error) {
+			return;
 		}
+
+		return ERROR_MESSAGES[error.status as HttpStatusCode];
 	}
 }

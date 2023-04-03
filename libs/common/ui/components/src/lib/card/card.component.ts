@@ -12,5 +12,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class CardComponent {
 	@Input() public description?: string;
 	@Input() public imageSrc: string | null;
-	@Input() public title: string;
+	@Input() public title?: string;
 }

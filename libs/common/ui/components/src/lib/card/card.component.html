@@ -1,7 +1,8 @@
 <header class="card__header">
 	<img
-		[alt]="title.length ? title : ''"
+		[alt]="title?.length ? title : ''"
 		[src]="imageSrc?.length ? imageSrc : 'assets/images/image-placeholder.png'"
+		onerror="src='assets/images/image-placeholder.png'"
 	/>
 </header>
 
@@ -22,7 +23,6 @@
 		<ng-template #showCustomDescription>
 			<ng-content select="[cardDescription]"></ng-content>
 		</ng-template>
-		<ng-content select="[cardDescription]"></ng-content>
 	</p>
 
 	<div class="card__details">
