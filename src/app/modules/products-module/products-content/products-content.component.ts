@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, finalize, tap } from 'rxjs';
-import { Product } from 'src/app/modules/cards-module/models/product.data';
-import { ProductService } from 'src/app/modules/cards-module/services/product.service';
+import { Product } from 'src/app/modules/products-module/models/product.data';
+import { ProductService } from 'src/app/modules/products-module/services/product.service';
 
 @Component({
   selector: 'app-products-content',
