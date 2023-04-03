@@ -1,6 +1,22 @@
 <div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
+  <div *ngIf="products$ | async as products; else noData">
+    <div class="products">
+      <ng-container *ngFor="let product of products">
+        <app-card class="product" [item]='product'></app-card>
+      </ng-container>
+    </div>
+
+    <button class="more" (click)="loadMore()" *ngIf="buttonVisible" [disabled]="isLoading"
+      [style.cursor]="isLoading ? 'wait' : 'pointer'">
+
+      <span *ngIf="!isLoading">Load more</span>
+      <span *ngIf="isLoading" class="loading">...</span>
+    </button>
   </div>
-  <button class="more">Load more</button>
+
+  <ng-template #noData class="products-wrapper">
+    <div class="products-wrapper">
+      Getting data...
+    </div>
+  </ng-template>
 </div>

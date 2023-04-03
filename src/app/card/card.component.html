@@ -1,0 +1,18 @@
+<div class="card-wrapper" (click)="goToUrl()">
+  <div class="card-image">
+    <img [src]='item.image ? item.image : "assets/placeholder-image.jpg"' [alt]="item.title">
+  </div>
+
+  <div class="card-details">
+    <div class="card-text">
+      <div class="card-title">{{item.title}}</div>
+      <div class="card-description">{{item.description}}</div>
+    </div>
+
+    <div class="card-categories">
+      <ng-container *ngFor="let category of item.categories">
+        <span class="card-category">{{category}}</span>
+      </ng-container>
+    </div>
+  </div>
+</div>

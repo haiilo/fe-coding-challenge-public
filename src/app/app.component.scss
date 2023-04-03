@@ -1,5 +1,6 @@
 .stage {
-  width: 50%;
+  width: 75%;
+  height: auto;
   min-width: 360px;
   max-width: 1400px;
   margin: 0 auto;
@@ -7,23 +8,70 @@
   background-color: #fff;
 }
 
-pre {
-  overflow: auto;
-  background-color: #f2f4f7;
-  padding: 1rem;
-}
-
 .more {
   font: inherit;
   display: block;
+  width: 10rem;
   margin: 4rem auto 0;
   border: 1px solid #d7dbe0;
   border-radius: .25rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
   background-color: #fff;
-  cursor: pointer;
 
-  &:hover, &:focus {
-    background-color: #ebecf0;
+  &:hover,
+  &:focus {
+    background-color: #7e86a5;
+  }
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product {
+  display: flex;
+  padding: 1rem;
+}
+
+.loading {
+  color: black;
+  font: inherit;
+  font-size: 16px;
+  font-weight: bolder;
+  letter-spacing: .2rem;
+  display: inline-block;
+  clip-path: inset(0 3ch 0 0);
+  animation: l .75s steps(4) infinite;
+}
+
+@keyframes l {
+  to {
+    clip-path: inset(0 -1ch 0 0)
+  }
+}
+
+@media (min-width: 576px) {
+  .product {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .product {
+    width: 44.25%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .product {
+    width: 29.5%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .product {
+    width: 22%;
   }
 }
