@@ -1,0 +1,17 @@
+<ng-container *ngIf="product">
+    <div class="product-image">
+        <img [ngClass]="{'img-error': imageErrors.has(product.url)}" [src]="product.image" [attr.alt]="product.title"
+            (error)="handleImageError(product)">
+        <div class="img-placeholder" *ngIf="imageErrors.has(product.url)"></div>
+    </div>
+
+    <div class="product-text">
+        <h1 class="product-title">{{product.title}}</h1>
+        <p class="product-description">{{product.description}}</p>
+        <div class="product-categories">
+            <div class="category" *ngFor="let category of product.categories">
+                {{category}}
+            </div>
+        </div>
+    </div>
+</ng-container>

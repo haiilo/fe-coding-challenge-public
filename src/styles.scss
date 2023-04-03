@@ -1,8 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+$layout-min-width: 360px;
+$layout-max-width: 1400px;
+
+html,
+body {
+  min-height: 100%;
+}
 
 body {
   margin: 0;
   background-color: #f2f4f7;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+
+.layout {
+  height: 100%;
+  width: 50%;
+  min-width: $layout-min-width;
+  max-width: $layout-max-width;
+  display: flex;
+  flex-direction: column;
+  padding: 64px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.button-classic {
+  display: block;
+  padding: 16px 32px;
+  border: 1px solid #d7dbe0;
+  border-radius: 4px;
+  margin: 64px auto 0;
+  background-color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+
+  &:hover,
+  &:focus {
+    background-color: #ebecf0;
+  }
 }

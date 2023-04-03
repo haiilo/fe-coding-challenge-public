@@ -1,0 +1,27 @@
+<section class="layout">
+    <div class="products-content" *ngIf="products.length > 0">
+        <ng-container *ngFor="let product of products">
+            <app-product class="product-content" [product]="product" (click)="openProduct(product)"></app-product>
+        </ng-container>
+    </div>
+
+    <div class="exception-content" *ngIf="!loading$.value && !error && !hasMorePages">
+        <h2>No more products to load.</h2>
+    </div>
+
+    <div class="exception-content" *ngIf="loading$.value">
+        <h2>Loading...</h2>
+    </div>
+
+    <div class="exception-content" *ngIf="error">
+        <h2>Error loading products.</h2>
+        <button class="button-classic" (click)="loadNextProducts()">Load
+            again the <strong>Products</strong></button>
+    </div>
+
+    <div>
+        <button class="button-classic" *ngIf="!loading$.value && !error && hasMorePages"
+            (click)="loadNextProducts()">Load
+            more <strong>Products</strong></button>
+    </div>
+</section>
