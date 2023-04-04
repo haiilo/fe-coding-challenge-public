@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="products">
+    <app-product-card *ngFor="let product of products"
+                      [product]="product"
+                      (click)="openProductUrl(product.url)">
+    </app-product-card>
+  </div>
+  <button *ngIf="!hasError && products.length" class="more" (click)="loadMore()" [disabled]="!currentPage?.more">Load more</button>
+  <div *ngIf="hasError" class="error-container">
+    <span> Something went wrong...Please reload. </span>
+    <button class="more" (click)="loadProducts()">Reload</button>
+  </div>
+</div>
+<div *ngIf="isLoading" class="lds-dual-ring"></div>

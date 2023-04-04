@@ -1,14 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  randNumber,
-  randProductCategory,
-  randProductDescription,
-  randProductName,
-  randUrl
-} from '@ngneat/falso';
+import { randNumber, randProductCategory, randProductDescription, randProductName, randUrl } from '@ngneat/falso';
 import { delay, Observable, of, throwError } from 'rxjs';
-import { Page } from './page';
-import { Product } from './product';
+import { Page } from '../interfaces/page';
+import { Product } from '../interfaces/product';
 
 /**
  * A service to handle products.
@@ -23,10 +17,10 @@ export class ProductService {
 
   /**
    * Get a page of products.
-   * 
+   *
    * *Note:* This is a fake service that returns random data. It simulates a
    * network request by delaying the response and randomly returning an error.
-   * 
+   *
    * @param page The page number.
    * @returns An observable of the page of products.
    */
@@ -43,8 +37,8 @@ export class ProductService {
     }
     if (res) {
       return (this.randBooleanWeighted(ProductService.PAGE_ERROR)
-        ? throwError(() => new Error('500 Internal Server Error'))
-        : of(res)
+          ? throwError(() => new Error('500 Internal Server Error'))
+          : of(res)
       ).pipe(delay(randNumber({ min: 150, max: 1500 })));
     }
     return throwError(() => new Error('400 Bad Request'));
@@ -56,7 +50,7 @@ export class ProductService {
       title: randProductName(),
       description: randProductDescription(),
       image: this.randBooleanWeighted(0.8)
-        ? `https://picsum.photos/id/${randNumber({ max: 1000 })}/400/400`
+        ? `https://picsum.photos/id/${ randNumber({ max: 1000 }) }/400/400`
         : null,
       categories: Array.from({ length: randNumber({ max: 5 }) }, () => randProductCategory())
     }));
