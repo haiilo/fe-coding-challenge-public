@@ -1,29 +1,49 @@
+@import '../styles/breakpoints';
+
 .stage {
-  width: 50%;
   min-width: 360px;
   max-width: 1400px;
   margin: 0 auto;
   padding: 4rem;
   background-color: #fff;
-}
-
-pre {
-  overflow: auto;
-  background-color: #f2f4f7;
-  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .more {
-  font: inherit;
-  display: block;
   margin: 4rem auto 0;
-  border: 1px solid #d7dbe0;
-  border-radius: .25rem;
   padding: 1rem 2rem;
-  background-color: #fff;
-  cursor: pointer;
 
   &:hover, &:focus {
     background-color: #ebecf0;
+  }
+}
+
+.loader-button-container {
+  text-align: center;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.product-card {
+  min-width: 16rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  width: 25%;
+
+  @include tablet {
+    width: 33%;
+  }
+
+  @include tablet-vertical {
+    width: 50%;
+  }
+
+  @include mobile {
+    width: 100%;
   }
 }

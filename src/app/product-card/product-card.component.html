@@ -1,0 +1,30 @@
+<a class="product-link" href="{{product.url}}" target="_blank">
+  <mat-card class="product-card">
+  <!--  if no requirements regarding not changing product service - -->
+  <!--  I'd prefer to change ratio in image getter parameters (400/200). It's better for performance -->
+  <!--  when server is responsible for image rendering with optimal size and ratio-->
+
+  <!--  if no requirements regarding specific 1:2 ratio I'd use image tag with combination of -->
+  <!--  ngSrc (NgOptimizedImage) and object-fit, object-position styles-->
+    <div *ngIf="product.image; else noImage"
+         class="image-wrapper product-image"
+         [ngStyle]="{'background-image': 'url(' + product.image + '), url(/assets/images/no_image.jpg)'}">
+    </div>
+    <ng-template #noImage>
+      <div class="image-wrapper no-image" [ngStyle]="{'background-image': 'url(/assets/images/no_image.jpg)'}"></div>
+    </ng-template>
+    <div class="product-info">
+      <mat-card-title class="product-title">{{product.title}}</mat-card-title>
+      <mat-card-content>
+        <div class="product-description">
+          {{product.description}}
+        </div>
+        <mat-chip-set class="product-categories" disabled>
+          <mat-chip *ngFor="let category of product.categories">
+            {{category}}
+          </mat-chip>
+        </mat-chip-set>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</a>
