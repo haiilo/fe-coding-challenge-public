@@ -1,6 +1,18 @@
 <div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
-  </div>
-  <button class="more">Load more</button>
+  <ng-container *ngIf="products$ | async; let products">
+    <div class="products">
+      <app-product-card class="product-card"
+                        *ngFor="let product of products.content; trackBy: trackByFn"
+                        [product]="product">
+      </app-product-card>
+    </div>
+    <div class="loader-button-container" *ngIf="products.more">
+      <button mat-stroked-button color="primary" class="more" (click)="loadNextPage()" [disabled]="isLoading">
+        Load more
+        <mat-icon *ngIf="isLoading">
+          <mat-spinner diameter="18"></mat-spinner>
+        </mat-icon>
+      </button>
+    </div>
+  </ng-container>
 </div>
