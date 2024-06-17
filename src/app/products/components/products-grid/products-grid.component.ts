@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {BehaviorSubject, catchError, concatMap, map, Observable, of, scan, Subject, takeUntil, tap} from "rxjs";
+import {BehaviorSubject, catchError, concatMap, map, of, scan, Subject, takeUntil, tap} from "rxjs";
 import {Page} from "src/app/products/interfaces/page.interface";
 import {Product} from "src/app/products/interfaces/product.interface";
 import {ProductService} from "src/app/products/services/product.service";

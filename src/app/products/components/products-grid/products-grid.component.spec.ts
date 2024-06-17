@@ -1,8 +1,8 @@
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {delay, of} from "rxjs";
 import {ProductService} from "src/app/products/services/product.service";
 
-import { ProductsGridComponent } from './products-grid.component';
+import {ProductsGridComponent} from './products-grid.component';
 
 describe('ProductsGridComponent', () => {
   let component: ProductsGridComponent;
