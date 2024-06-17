@@ -1,8 +1,4 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Page } from './products/page';
-import { Product } from './products/product';
-import { ProductService } from './products/product.service';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +6,4 @@ import { ProductService } from './products/product.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private readonly productService: ProductService) {}
-
-  readonly products$: Observable<Page<Product>> = this.productService.get(0);
 }

@@ -1,0 +1,39 @@
+$spinnerSize: 48px;
+$spinnerThickness: 3px;
+$spinnerMargin: 2px;
+$innerSpinnerSize: $spinnerSize - ($spinnerThickness * 2) - $spinnerMargin;
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// In case we need more spinner sizes, we can create a mixin
+.spinner {
+  width: $spinnerSize;
+  height: $spinnerSize;
+  border: $spinnerThickness solid #FFF;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+
+  &:after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: $innerSpinnerSize;
+    height: $innerSpinnerSize;
+    border-radius: 50%;
+    border: $spinnerThickness solid;
+    border-color: #FF3D00 transparent;
+  }
+}

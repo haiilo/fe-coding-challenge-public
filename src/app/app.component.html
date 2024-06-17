@@ -1,6 +1,4 @@
 <div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
-  </div>
-  <button class="more">Load more</button>
+  <!-- This would ordinarily be a router-outlet, but we're not using routing in this example -->
+  <app-products-grid></app-products-grid>
 </div>

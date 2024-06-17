@@ -1,0 +1,30 @@
+$toastSpacing: 20px;
+
+.toasts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: $toastSpacing;
+
+  .toast {
+    position: relative;
+    max-width: 80ch;
+    padding: $toastSpacing;
+    margin: 0 auto $toastSpacing auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px -2px rgb(16 24 40 / 8%), 0px 0px 8px -2px rgb(16 24 40 / 8%);
+    background-color: #fff;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    cursor: pointer;
+
+    &.danger {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  }
+}

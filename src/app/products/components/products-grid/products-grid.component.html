@@ -1,0 +1,31 @@
+<div class="products" *ngIf="products$ | async; let products">
+  <a [href]="product.url" target="_blank" *ngFor="let product of products" class="product">
+    <div class="productImage">
+      <img
+        *ngIf="product.image"
+        [src]="product.image"
+        [alt]="product.title"
+        (error)="product.image = null"
+      >
+    </div>
+
+    <div class="productContent">
+      <h3 class="productTitle">{{ product.title }}</h3>
+      <div class="productDescription">{{ product.description }}</div>
+      <div class="flexSpacer"></div>
+      <div class="productCategories"><span class="pill" *ngFor="let category of product.categories">{{category}}</span></div>
+    </div>
+  </a>
+</div>
+<button class="more" [disabled]="canLoadMore ? null : true" (click)="loadMore()">Load more</button>
+
+<div class="loadingOverlay" *ngIf="ongoingRequests">
+  <div class="spinner"></div>
+</div>
+
+<div class="toasts" *ngIf="errorState">
+  <div class="toast danger">
+    Something went kaput. Please try again later.
+    (Also, I couldn't be bothered to implement a dismiss button)
+  </div>
+</div>

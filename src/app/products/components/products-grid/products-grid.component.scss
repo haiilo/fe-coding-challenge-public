@@ -1,0 +1,89 @@
+@import "src/styles/mixins.scss";
+
+:host {
+  position: relative;
+  display: block;
+}
+
+.more {
+  display: block;
+  margin: 4rem auto 0;
+  padding: 1rem 2rem;
+  border: 1px solid #d7dbe0;
+  border-radius: .25rem;
+  font: inherit;
+  background-color: #fff;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    background-color: #ebecf0;
+  }
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #EEEEEE;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 6px -3px rgba(0, 0, 0, 0.25);
+    text-decoration: unset;
+    color: unset;
+
+    .productImage {
+      width: 100%;
+      flex: 0 0 auto;
+      aspect-ratio: 2 / 1;
+      overflow: hidden;
+      background-color: #ECECEC;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .productContent {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1;
+      padding: 0 1rem 1rem 1rem;
+    }
+
+    .productTitle {
+      font-weight: 900;
+    }
+
+    .productDescription {
+      font-size: 0.85rem;
+      font-weight: 800;
+
+      @include multilineEllipsis(3);
+    }
+
+    .productCategories {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 0 0;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.loadingOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
