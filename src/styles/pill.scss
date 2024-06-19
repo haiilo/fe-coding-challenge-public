@@ -1,10 +1,12 @@
+@import "colors";
+
 .pill {
   display: inline-block;
   padding: 0.2rem 0.5rem;
   border-radius: 0.2rem;
-  border: 1px solid #5e6c84;
+  border: 1px solid $color-gray-500;
   font-weight: 800;
-  background-color: #FFFFFF;
-  color: #5e6c84;
+  background-color: $color-gray-neutral-0;
+  color: $color-gray-500;
   font-size: 0.75rem;
 }

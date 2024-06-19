@@ -1,3 +1,4 @@
+@import "src/styles/colors";
 
 :host {
   position: relative;
@@ -8,14 +9,14 @@
   display: block;
   margin: 4rem auto 0;
   padding: 1rem 2rem;
-  border: 1px solid #d7dbe0;
+  border: 1px solid $color-gray-50;
   border-radius: .25rem;
   font: inherit;
-  background-color: #fff;
+  background-color: $color-gray-neutral-0;
   cursor: pointer;
 
   &:hover, &:focus {
-    background-color: #ebecf0;
+    background-color: $color-gray-100;
   }
 }
 
@@ -31,6 +32,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgb(0, 0, 0, 0.75);
   z-index: 1;
 }

@@ -1,3 +1,5 @@
+@import "colors";
+
 $toastSpacing: 20px;
 
 .toasts {
@@ -15,16 +17,16 @@ $toastSpacing: 20px;
     margin: 0 auto $toastSpacing auto;
     border-radius: 5px;
     box-shadow: 0 4px 12px -2px rgb(16 24 40 / 8%), 0px 0px 8px -2px rgb(16 24 40 / 8%);
-    background-color: #fff;
-    color: #333;
+    background-color: $color-gray-neutral-0;
+    color: $color-gray-neutral-700;
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.5;
     cursor: pointer;
 
     &.danger {
-      background-color: #f8d7da;
-      color: #721c24;
+      background-color: $color-danger-200;
+      color: $color-danger-600;
     }
   }
 }

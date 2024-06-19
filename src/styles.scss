@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
+@import 'styles/colors';
 @import 'styles/pill';
 @import 'styles/spinner';
 @import 'styles/toast';
@@ -8,6 +9,6 @@
 
 body {
   margin: 0;
-  background-color: #f2f4f7;
+  background-color: $color-gray-25;
   font-family: 'Open Sans', sans-serif;
 }

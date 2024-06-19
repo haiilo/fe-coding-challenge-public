@@ -1,3 +1,5 @@
+@import "colors";
+
 $spinnerSize: 48px;
 $spinnerThickness: 3px;
 $spinnerMargin: 2px;
@@ -16,7 +18,7 @@ $innerSpinnerSize: $spinnerSize - ($spinnerThickness * 2) - $spinnerMargin;
 .spinner {
   width: $spinnerSize;
   height: $spinnerSize;
-  border: $spinnerThickness solid #FFF;
+  border: $spinnerThickness solid $color-gray-neutral-0;
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -34,6 +36,6 @@ $innerSpinnerSize: $spinnerSize - ($spinnerThickness * 2) - $spinnerMargin;
     height: $innerSpinnerSize;
     border-radius: 50%;
     border: $spinnerThickness solid;
-    border-color: #FF3D00 transparent;
+    border-color: $color-main-600 transparent;
   }
 }
