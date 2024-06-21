@@ -7,11 +7,11 @@ import {
   randUrl
 } from '@ngneat/falso';
 import { delay, Observable, of, throwError } from 'rxjs';
-import { Page } from './page';
-import { Product } from './product';
+import { Page } from '../models/page';
+import { Product } from '../models/product';
 
 /**
- * A service to handle products.
+ * A services to handle products.
  */
 @Injectable({
   providedIn: 'root',
@@ -23,10 +23,10 @@ export class ProductService {
 
   /**
    * Get a page of products.
-   * 
-   * *Note:* This is a fake service that returns random data. It simulates a
+   *
+   * *Note:* This is a fake services that returns random data. It simulates a
    * network request by delaying the response and randomly returning an error.
-   * 
+   *
    * @param page The page number.
    * @returns An observable of the page of products.
    */
@@ -64,5 +64,9 @@ export class ProductService {
 
   private randBooleanWeighted(trueWeight: number): boolean {
     return randNumber({ max: 1, fraction: 2 }) <= trueWeight;
+  }
+
+  public static getPageCount(): number {
+    return ProductService.PAGE_COUNT;
   }
 }

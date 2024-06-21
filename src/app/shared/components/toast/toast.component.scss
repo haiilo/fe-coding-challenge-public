@@ -1,0 +1,32 @@
+.toast {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 16px;
+  border-radius: 4px;
+
+  &-error {
+    color: #f44336;
+    background-color: #faeded;
+    border: 1px solid #f44336;
+  }
+
+  &-success {
+    color: #4caf50;
+    background-color: #edfaed;
+    border: 1px solid #4caf50;
+  }
+
+  &-info {
+    color: #0dcaf0;
+    background-color: #edf7fa;
+    border: 1px solid #0dcaf0;
+  }
+
+  &-warning {
+    color: #ff9800;
+    background-color: #faedf4;
+    border: 1px solid #ff9800;
+  }
+}

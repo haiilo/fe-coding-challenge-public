@@ -1,0 +1,8 @@
+<div class="toast" [ngClass]="'toast-' + toast.type" *ngIf="toast">
+  <p>{{ toast.message }}</p>
+  <button class="btn btn-sm"
+          type="button"
+          [ngClass]="toast.type !== ToastType.ERROR ? ('btn-outline-' + toast.type) : 'btn-outline-danger'"
+          (click)="close()">Close
+  </button>
+</div>

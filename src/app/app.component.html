@@ -1,6 +1,2 @@
-<div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
-  </div>
-  <button class="more">Load more</button>
-</div>
+<app-products></app-products>
+<app-toast [toast]="toast$ | async"></app-toast>

@@ -1,0 +1,15 @@
+<div class="p-5">
+  <div *ngIf="products$ | async; let products" class="grid">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let product of products.content">
+        <app-card class="border-1" [product]="product"></app-card>
+      </div>
+    </div>
+  </div>
+  <div class="spinner-container" *ngIf="isLoading">
+    <div class="spinner"></div>
+  </div>
+   <button *ngIf="products$ | async" class="more-btn" (click)="loadMore()" >Load more</button>
+</div>
+
+

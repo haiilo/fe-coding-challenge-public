@@ -1,0 +1,13 @@
+<div class="card" (click)="openProductUrl()">
+  <div class="card-image-container">
+    <img *ngIf="product?.image" [src]="product?.image" alt="Card image" class="card-image">
+    <img *ngIf="!product?.image" [src]="'https://placeholder.pics/svg/150x150/DEDEDE/555555/No%20image'" alt="Card image" class="card-image">
+  </div>
+  <div class="card-content">
+    <h2 class="card-title">{{ product?.title }}</h2>
+    <p class="card-description">{{ product?.description }}</p>
+    <div class="card-tags">
+      <span *ngFor="let tag of product?.categories" class="tag">{{ tag }}</span>
+    </div>
+  </div>
+</div>
