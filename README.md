@@ -1,4 +1,4 @@
-# Products | Coding Kata
+# Products | Coding Kata - Valentin's Solution
 
 Welcome to this little coding kata. Your task is to implement a small set of
 features covering HTML & (S)CSS, JavaScript & Typescript as well as Angular &

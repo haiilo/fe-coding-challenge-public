@@ -1,0 +1,12 @@
+<div class="card" (click)="onClick(url)">
+  <div>
+    <div class="card__cover">
+      <app-card-image [url]="cover"></app-card-image>
+    </div>
+    <h6 class="card__title">{{title}}</h6>
+    <p class="card__body">{{body}}</p>
+  </div>
+  <div class="card__footer">
+    <ng-content select="card-footer"></ng-content>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+@import "mixins";
+
 .stage {
   width: 50%;
   min-width: 360px;
@@ -5,6 +7,14 @@
   margin: 0 auto;
   padding: 4rem;
   background-color: #fff;
+
+  @include for-size(tablet-landscape-up) {
+    width: 65%;
+  }
+
+  @include for-size(desktop-up) {
+    width: 75%;
+  }
 }
 
 pre {
@@ -13,7 +23,7 @@ pre {
   padding: 1rem;
 }
 
-.more {
+.load-more-button {
   font: inherit;
   display: block;
   margin: 4rem auto 0;
@@ -26,4 +36,34 @@ pre {
   &:hover, &:focus {
     background-color: #ebecf0;
   }
+}
+
+// This code would be added maybe to a gallery components. However here I created only the reusable card component and the
+// grid layout for this example was added here. This is not ideal but a good enough solution for the purpose of this exercise.
+.cards {
+  gap: 1rem;
+  grid-auto-rows: 1fr;
+  transition: all ease-in-out 0.25s;
+
+  // I could have added on each breakpoint the minimum requirement of 16rem using e.g. repeat(1, minmax(16rem, 1fr)).
+  // On my laptop considering the available viewport the min value would always be max possible value to be displayed
+  // so the resizing animation would not be visible like in the readme file. I wanted to showcase that and I took the
+  // liberty to remove requirement of 16rem for this interview test. The cards however are still readable without a min
+  // width of 16rem.
+  @include grid(repeat(1, 1fr), repeat(1, 1fr));
+
+  @include for-size(tablet-portrait-up) {
+    @include grid(repeat(1, 1fr), repeat(2, 1fr));
+  }
+
+  @include for-size(tablet-portrait-up) {
+    @include grid(repeat(1, 1fr), repeat(2, 1fr));
+  }
+  @include for-size(tablet-landscape-up) {
+    @include grid(repeat(1, 1fr), repeat(3, 1fr));
+  }
+  @include for-size(desktop-up) {
+    @include grid(repeat(1, 1fr), repeat(4, 1fr));
+  }
+
 }

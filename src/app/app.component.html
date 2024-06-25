@@ -1,6 +1,14 @@
 <div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
+<!--  TODO: make the error state pretty and more user friendly-->
+  <div *ngIf="hasError$ | async">
+    <p>Something went wrong. Please try again
+      <button (click)="onLoadMore()">Retry</button>
+    </p>
   </div>
-  <button class="more">Load more</button>
+  <div class="cards" *ngIf="items$ | async; let products">
+    <app-card *ngFor="let product of products" [cover]="product.image" [url]="product.url" [title]="product.title" [body]="product.description">
+        <app-tags ngProjectAs="card-footer" [tags]="product.categories"></app-tags>
+    </app-card>
+  </div>
+  <button *ngIf="hasMore$ | async" class="load-more-button" (click)="onLoadMore()" [disabled]="isLoading$|async">{{ (isLoading$ | async) ? 'Loading...' : 'Load more' }}</button>
 </div>

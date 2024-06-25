@@ -1,0 +1,17 @@
+.tags {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2px 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    border: solid 1px slategray;
+    color: darkslategray;
+    border-radius: 2px;
+    font-size: 12px;
+    white-space: normal;
+    padding: 0 2px;
+  }
+}
