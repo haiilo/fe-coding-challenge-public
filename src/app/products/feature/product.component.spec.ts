@@ -25,7 +25,7 @@ describe('ProductComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Call getAll method on ngOnInit',() => {
+  it('Load first page of products',() => {
     expect(facade.getAll).toHaveBeenCalled();
   });
 
