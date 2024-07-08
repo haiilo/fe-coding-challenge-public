@@ -1,0 +1,29 @@
+
+<div class="card-wrapper" *ngIf="product">
+  <div class="card">
+    <div class="image-wrapper">
+      <img *ngIf="product.image; else placeholder" [src]="product.image">
+      <ng-template #placeholder>
+        <img #placeholder src="../../../../assets/placeholder.jpg" alt="">
+      </ng-template>
+    </div>
+    <div class="content-wrapper">
+      <div class="text-wrapper">
+        <div class="title-wrapper">
+          <h4 class="title">{{ product.title }}</h4>
+        </div>
+        <div class="description-wrapper">
+          <p class="description">{{ product.description }}</p>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="categories-wrapper">
+          <div class="category-wrapper" *ngFor="let category of product.categories">
+            <span>{{ category }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

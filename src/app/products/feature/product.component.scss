@@ -1,0 +1,52 @@
+.products-wrapper {
+  padding: 40px;
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 25px;
+    app-product-ui {
+      @media only screen and (min-width: 1200px) {
+        width: 23%;
+      }
+      @media only screen and (max-width: 1200px) {
+        width: 31%;
+      }
+      @media only screen and (max-width: 900px) {
+        width: 48%;
+      }
+      @media only screen and (max-width: 750px) {
+        width: 100%;
+      }
+    }
+  }
+  .button-wrapper {
+    margin-top: 30px;
+    text-align: center;
+    button {
+      width: 200px;
+      color: #fff;
+      display: block;
+      text-align: center;
+      margin: 20px auto;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background-color: blue;
+      transition: .3s;
+      cursor: pointer;
+      &:hover {
+        color: blue;
+        background-color: #fff;
+        border: 1px solid blue;
+        text-decoration: none;
+      }
+    }
+  }
+  .no-more-content {
+    text-align: center;
+    margin-top: 30px;
+  }
+}

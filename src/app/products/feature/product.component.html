@@ -1,0 +1,13 @@
+<div class="products-wrapper">
+  <div class="products" *ngIf="products$ | async; let products">
+    <app-product-ui *ngFor="let product of products.content" [product]="product"></app-product-ui>
+  </div>
+  <div class="button-wrapper" *ngIf="more$ | async as more; else noMoreProducts">
+    <button (click)="loadMore()">Load more</button>
+  </div>
+  <ng-template #noMoreProducts>
+    <div class="no-more-content"><span>No more products</span></div>
+  </ng-template>
+
+</div>
+
