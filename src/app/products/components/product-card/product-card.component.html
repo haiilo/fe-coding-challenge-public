@@ -1,0 +1,14 @@
+<div class="product-card" (click)="openProductUrl(product.url)">
+    <div class="image-container">
+        <img [src]="imageUrl" alt="{{ product.title }}">
+    </div>
+    <div class="content">
+        <h3>{{ product.title }}</h3>
+        <p appTruncateDescription [maxLines]="3">{{ product.description }}</p>
+        <div class="categories-container">
+            <div class="categories">
+                <span *ngFor="let category of product.categories" class="category-box">{{ category }}</span>
+            </div>
+        </div>
+    </div>
+</div>

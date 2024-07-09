@@ -1,0 +1,16 @@
+<div class="products-container">
+    <div class="products">
+        <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+    </div>
+    <div *ngIf="loading" class="spinner-overlay">
+        <img src="/assets/spinner.gif" alt="Loading..." class="spinner-image">
+    </div>
+    <div *ngIf="error" class="error">
+        {{ error }}
+    </div>
+
+    <button class="load-more-btn" *ngIf="products.length > 0" (click)="onReadMore()"
+        [disabled]="loading || !moreProducts">
+        Load more
+    </button>
+</div>
