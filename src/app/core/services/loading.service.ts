@@ -10,8 +10,6 @@ export class LoadingService {
   loading$: Observable<boolean> = this.loadingSubject.asObservable();
 
   setLoading(loading: boolean) {
-    console.log('123');
-    
     this.loadingSubject.next(loading);
   }
 }
