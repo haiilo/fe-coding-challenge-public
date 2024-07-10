@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "fe-coding-challenge:build:production"
+              "buildTarget": "fe-coding-challenge:build:production"
             },
             "development": {
-              "browserTarget": "fe-coding-challenge:build:development"
+              "buildTarget": "fe-coding-challenge:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fe-coding-challenge:build"
+            "buildTarget": "fe-coding-challenge:build"
           }
         },
         "test": {
