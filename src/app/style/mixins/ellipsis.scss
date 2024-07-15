@@ -1,0 +1,16 @@
+@mixin ellipsis-lines($lines: 3) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: $lines;
+}
+
+@for $i from 1 through 10 {
+    .ellipsis-#{$i} {
+        @include ellipsis-lines($i);
+    }
+}
+
+.ellipsis {
+    @include ellipsis-lines(3);
+}

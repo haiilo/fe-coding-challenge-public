@@ -1,8 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import 'app/style/_variables.scss';
 
 body {
-  margin: 0;
-  background-color: #f2f4f7;
-  font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background-color: $surfaceA;
+    font-family: $textFontPrimary;
+}
+
+.skeleton {
+    background-color: $surfaceC;
+    border-radius: $borderRadiusStaticMedium;
+    animation: skeleton-loading 1.2s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: $surfaceC;
+    }
+    50% {
+        background-color: $surfaceA;
+    }
+    100% {
+        background-color: $surfaceC;
+    }
 }

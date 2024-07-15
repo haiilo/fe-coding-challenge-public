@@ -1,0 +1,23 @@
+<div
+    class="stage"
+    *ngIf="{
+        products: products$ | async,
+        loading: loading$ | async,
+        error: error$ | async,
+        more: more$ | async
+    } as entities"
+>
+    <div class="products">
+        <ng-container *ngIf="entities.products?.content">
+            <app-product-card class="product" *ngFor="let product of entities.products?.content" [product]="product"></app-product-card>
+        </ng-container>
+        <ng-container *ngIf="entities.loading">
+            <app-product-card class="product" *ngFor="let _ of [1, 2, 3, 4]" [loading]="true"></app-product-card>
+        </ng-container>
+        <ng-container *ngIf="entities.error">
+            <p class="products-loading-error">There was an error loading products. Please try to load more.</p>
+        </ng-container>
+    </div>
+    <button [disabled]="entities.loading || !entities.more" class="more" (click)="loadMore()">Load more</button>
+</div>
+<br />

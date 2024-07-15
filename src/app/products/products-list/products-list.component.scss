@@ -1,0 +1,57 @@
+@import '../../style/_variables.scss';
+
+.stage {
+    width: 50%;
+    min-width: 360px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem;
+    background-color: $surfaceB;
+
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+
+        .product {
+            box-shadow: $boxShadowPrimary;
+            border-radius: $borderRadiusStaticMedium;
+            overflow: hidden;
+            min-width: 16rem;
+            flex-grow: 1;
+            flex-basis: 0%;
+        }
+
+        .products-loading-error {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            font-size: $fontSizeM;
+            font-weight: $fontWeightMedium;
+            color: $textColorDanger;
+        }
+    }
+
+    .more {
+        font: inherit;
+        display: block;
+        margin: 4rem auto 0;
+        border: 1px solid $borderColor;
+        border-radius: 0.25rem;
+        padding: 1rem 2rem;
+        background-color: $surfaceB;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            &:not(:disabled) {
+                background-color: $surfaceC;
+            }
+            &:disabled {
+                cursor: not-allowed;
+            }
+        }
+    }
+}

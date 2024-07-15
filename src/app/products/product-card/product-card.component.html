@@ -1,0 +1,40 @@
+<div class="card-wrapper" (click)="goToCardUrl()">
+    <div class="card-image-container">
+        <ng-container *ngIf="!!product.image && !loading; else placeholderImage">
+            <img errorHandling lazy [attr.data-src]="product.image" alt="Product image" />
+        </ng-container>
+        <ng-template #placeholderImage>
+            <img [src]="imagePlaceholder" alt="Placeholder image" />
+        </ng-template>
+    </div>
+    <div class="card-content-container">
+        <div class="card-content">
+            <div class="card-content-title">
+                <ng-container *ngIf="loading; else contentTitle">
+                    <div class="skeleton skeleton-title"></div>
+                </ng-container>
+                <ng-template #contentTitle>
+                    {{ product.title }}
+                </ng-template>
+            </div>
+            <div class="card-content-description ellipsis-3">
+                <ng-container *ngIf="loading; else contentDescription">
+                    <div class="skeleton skeleton-description"></div>
+                </ng-container>
+                <ng-template #contentDescription>
+                    {{ product.description }}
+                </ng-template>
+            </div>
+        </div>
+        <div class="card-content-categories">
+            <ng-container *ngIf="loading; else contentCategories">
+                <div *ngFor="let _ of [1, 2, 3]" class="skeleton skeleton-category"></div>
+            </ng-container>
+            <ng-template #contentCategories>
+                <div *ngFor="let category of product.categories" class="product-category">
+                    {{ category }}
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

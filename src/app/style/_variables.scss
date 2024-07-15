@@ -1,0 +1,43 @@
+// Colors
+$textColorPrimary: var(--text-color--primary);
+$textColorSecondary: var(--text-color--secondary);
+$textColorDanger: var(--text-color--danger);
+$textFontPrimary: var(--text-font-primary);
+$surfaceA: var(--surface--a);
+$surfaceB: var(--surface--b);
+$surfaceC: var(--surface--c);
+$borderColor: var(--border-color);
+
+// Fonts
+$fontSizeS: var(--font-size--s);
+$fontSizeM: var(--font-size--m);
+$fontSizeL: var(--font-size--l);
+$fontWeightNormal: var(--font-weight--normal);
+$fontWeightMedium: var(--font-weight--medium);
+$fontWeightBold: var(--font-weight--bold);
+
+// Misc
+$borderRadiusRelativeMedium: var(--border-radius__relative--medium);
+$borderRadiusStaticMedium: var(--border-radius__static--medium);
+$boxShadowPrimary: var(--box-shadow--primary);
+
+:root {
+    --text-color--primary: #030303;
+    --text-color--secondary: #87909d;
+    --text-color--danger: #ff4d4f;
+    --text-font-primary: 'Open Sans', sans-serif;
+    --surface--a: #f2f4f7;
+    --surface--b: #ffffff;
+    --surface--c: #ebecf0;
+    --border-radius__relative--medium: 1rem;
+    --border-radius__static--medium: 5px;
+    --border-color: #d7dbe0;
+    --box-shadow--primary: 0px 1px 3px 1px rgba(0, 0, 0, 0.1);
+
+    --font-size--s: 0.9rem;
+    --font-size--m: 1rem;
+    --font-size--l: 1.25rem;
+    --font-weight--normal: 400;
+    --font-weight--medium: 600;
+    --font-weight--bold: 800;
+}
