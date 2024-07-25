@@ -1,6 +1,6 @@
 <div class="stage">
   <div class="products" *ngIf="products$ | async; let products">
-    <ng-container *ngFor="let product of products.content">
+    <ng-container *ngFor="let product of products">
       <a [href]="product.url" target="_blank" class="product-link">
         <article class="product">
           <div class="product-header">
@@ -26,5 +26,13 @@
       </a>
     </ng-container>
   </div>
-  <button class="more">Load more</button>
+  <button class="more" (click)="loadMoreProducts()" *ngIf="canLoadMore$ | async">Load more</button>
+</div>
+
+<div class="loader-container" *ngIf="isLoading$ | async">
+  <div class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </div>
