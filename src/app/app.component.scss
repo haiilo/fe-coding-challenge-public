@@ -13,6 +13,18 @@
   padding: 20px;
 }
 
+.product-link {
+  display: flex;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: unset;
+    text-decoration: unset;
+  }
+}
+
 .product {
   display: flex;
   flex-direction: column;
