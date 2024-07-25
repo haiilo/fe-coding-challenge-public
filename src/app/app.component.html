@@ -1,6 +1,26 @@
 <div class="stage">
   <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
+    <article class="product" *ngFor="let product of products.content">
+      <div class="product-header">
+        <div class="product-image-wrapper">
+          <img
+            [src]="product.image"
+            alt="Product image"
+            class="product-image"
+            onerror="this.onerror=null; this.src='assets/placeholder.jpg';"
+          />
+        </div>
+      </div>
+      <div class="product-body">
+        <h4>{{ product.title }}</h4>
+        <p class="product-description">{{ product.description }}</p>
+      </div>
+      <div class="product-footer">
+        <div class="product-categories">
+          <div class="product-category" *ngFor="let category of product.categories">{{ category }}</div>
+        </div>
+      </div>
+    </article>
   </div>
   <button class="more">Load more</button>
 </div>
