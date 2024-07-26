@@ -8,12 +8,12 @@ import { AppState } from './app.state';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  readonly isLoading$ = this.state.isLoading$;
-  readonly canLoadMore$ = this.state.canLoadMore$;
-  readonly products$ = this.state.products$;
-  readonly errorMessage$ = this.state.errorMessage$;
+  isLoading$ = this.state.isLoading$;
+  canLoadMore$ = this.state.canLoadMore$;
+  products$ = this.state.products$;
+  errorMessage$ = this.state.errorMessage$;
 
-  private readonly destroyRef$ = inject(DestroyRef);
+  private destroyRef$ = inject(DestroyRef);
 
   constructor(private readonly state: AppState) {}
 
