@@ -41,7 +41,6 @@ export class AppState {
         this.canLoadMoreSubj.next(data.more);
       }),
       catchError((error) => {
-        console.log(error);
         this.errorMessageSubj.next(error.message);
         return EMPTY;
       }),
