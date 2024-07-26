@@ -1,38 +1,10 @@
 <div class="stage">
   <div class="products" *ngIf="products$ | async; let products">
-    <ng-container *ngFor="let product of products">
-      <a [href]="product.url" target="_blank" class="product-link">
-        <article class="product">
-          <div class="product-header">
-            <div class="product-image-wrapper">
-              <img
-                [src]="product.image"
-                alt="Product image"
-                class="product-image"
-                onerror="this.onerror=null; this.src='assets/placeholder.jpg';"
-              />
-            </div>
-          </div>
-          <div class="product-body">
-            <h4>{{ product.title }}</h4>
-            <p class="product-description">{{ product.description }}</p>
-          </div>
-          <div class="product-footer">
-            <div class="product-categories">
-              <div class="product-category" *ngFor="let category of product.categories">{{ category }}</div>
-            </div>
-          </div>
-        </article>
-      </a>
-    </ng-container>
+    <a [href]="product.url" target="_blank" class="product-link" *ngFor="let product of products">
+      <app-product [data]="product"></app-product>
+    </a>
   </div>
   <button class="more" (click)="loadMoreProducts()" *ngIf="canLoadMore$ | async">Load more</button>
 </div>
 
-<div class="loader-container" *ngIf="isLoading$ | async">
-  <div class="loader">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-</div>
+<app-page-loader *ngIf="isLoading$ | async"></app-page-loader>
