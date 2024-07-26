@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   readonly isLoading$ = this.state.isLoading$;
   readonly canLoadMore$ = this.state.canLoadMore$;
   readonly products$ = this.state.products$;
+  readonly errorMessage$ = this.state.errorMessage$;
 
   private readonly destroyRef$ = inject(DestroyRef);
 

@@ -1,4 +1,5 @@
 <div class="stage">
+  <div class="error-box" *ngIf="errorMessage$ | async; let errorMessage">{{ errorMessage }}</div>
   <div class="products" *ngIf="products$ | async; let products">
     <a [href]="product.url" target="_blank" class="product-link" *ngFor="let product of products">
       <app-product [data]="product"></app-product>

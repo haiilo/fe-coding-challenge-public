@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, EMPTY, finalize, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY, finalize, Observable, tap } from 'rxjs';
 import { Product } from './products/product';
 import { ProductService } from './products/product.service';
 
@@ -11,6 +11,7 @@ export class AppState {
   private readonly canLoadMoreSubj = new BehaviorSubject<boolean>(false);
   private readonly productsSubj = new BehaviorSubject<Product[]>([]);
   private readonly currentPageSubj = new BehaviorSubject<number>(0);
+  private readonly errorMessageSubj = new BehaviorSubject<string | undefined>(undefined);
 
   get isLoading$(): Observable<boolean> {
     return this.isLoadingSubj.asObservable();
@@ -24,15 +25,25 @@ export class AppState {
     return this.productsSubj.asObservable();
   }
 
+  get errorMessage$(): Observable<string | undefined> {
+    return this.errorMessageSubj.asObservable();
+  }
+
   constructor(private readonly productService: ProductService) {}
 
   getProducts() {
+    this.errorMessageSubj.next(undefined);
     this.isLoadingSubj.next(true);
 
     return this.productService.get(this.currentPageSubj.value).pipe(
       tap((data) => {
         this.productsSubj.next([...this.productsSubj.value, ...data.content]);
         this.canLoadMoreSubj.next(data.more);
+      }),
+      catchError((error) => {
+        console.log(error);
+        this.errorMessageSubj.next(error.message);
+        return EMPTY;
       }),
       finalize(() => this.isLoadingSubj.next(false))
     );
