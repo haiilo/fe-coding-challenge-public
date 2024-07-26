@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, EMPTY, finalize, Observable, tap } from 'rxjs';
-import { ProductService } from './services';
-import { Product } from './models';
+import { ProductService } from '../services';
+import { Product } from '../models';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AppState {
+export class ProductsState {
   private readonly isLoadingSubj = new BehaviorSubject<boolean>(false);
   private readonly canLoadMoreSubj = new BehaviorSubject<boolean>(false);
   private readonly productsSubj = new BehaviorSubject<Product[]>([]);
