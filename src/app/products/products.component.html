@@ -2,7 +2,13 @@
   {{ errorMessage }}
 </div>
 <div class="products" *ngIf="products$ | async; let products">
-  <a [href]="product.url" target="_blank" class="product-link" *ngFor="let product of products">
+  <a
+    data-testid="product-link"
+    [href]="product.url"
+    target="_blank"
+    class="product-link"
+    *ngFor="let product of products"
+  >
     <app-product data-testid="product" [data]="product"></app-product>
   </a>
 </div>

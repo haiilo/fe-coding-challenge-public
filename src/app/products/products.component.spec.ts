@@ -8,7 +8,7 @@ import { ProductsState } from './states';
 
 describe('ProductsComponent', () => {
   const INIT_PRODUCTS: Product[] = [
-    { url: '', title: 'Product 1', description: 'Description', image: null, categories: [] },
+    { url: 'https://esse.biz/lander', title: 'Product 1', description: 'Description', image: null, categories: [] },
   ];
   const ALL_PRODUCTS: Product[] = [
     ...INIT_PRODUCTS,
@@ -132,5 +132,15 @@ describe('ProductsComponent', () => {
 
       expect(errorBox).toBeFalsy();
     });
+  });
+
+  it('should open the product URL in a new tab', () => {
+    const productLinks = fixture.debugElement.queryAll(By.css('[data-testid="product-link"]'));
+    const firstAnchorEl = [...productLinks].shift()?.nativeElement as HTMLAnchorElement;
+    const firstProductUrl = [...INIT_PRODUCTS].shift()?.url ?? '';
+
+    expect(productLinks.length).toBe(INIT_PRODUCTS.length);
+    expect(firstAnchorEl.href).toBe(firstProductUrl);
+    expect(firstAnchorEl.target).toBe('_blank');
   });
 });
