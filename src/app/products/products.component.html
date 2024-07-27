@@ -1,0 +1,19 @@
+<div data-testid="error-box" class="error-box" *ngIf="errorMessage$ | async; let errorMessage">
+  {{ errorMessage }}
+</div>
+<div class="products" *ngIf="products$ | async; let products">
+  <a
+    data-testid="product-link"
+    [href]="product.url"
+    target="_blank"
+    class="product-link"
+    *ngFor="let product of products"
+  >
+    <app-product data-testid="product" [data]="product"></app-product>
+  </a>
+</div>
+<button data-testid="load-more-button" class="more" (click)="loadMoreProducts()" *ngIf="canLoadMore$ | async">
+  Load more
+</button>
+
+<app-page-loader data-testid="page-loader" *ngIf="isLoading$ | async"></app-page-loader>
