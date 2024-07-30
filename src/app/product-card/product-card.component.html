@@ -1,0 +1,14 @@
+<div class="card" (click)="openProductPage()">
+  <section class="image">
+    <img [src]="product.image" alt="product image">
+  </section>
+  <section class="content">
+    <div>
+      <h2 class="title">{{ product.title }}</h2>
+      <span class="description">{{ product.description }}</span>
+    </div>
+    <ul>
+      <li *ngFor="let category of product.categories">{{ category }}</li>
+    </ul>
+  </section>
+</div>
