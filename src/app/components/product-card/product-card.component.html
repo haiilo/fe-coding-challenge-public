@@ -1,0 +1,17 @@
+<div class="card__image">
+  <img [src]="imageSrc()" (error)="setDefaultPic()"/>
+</div>
+
+<h3 class="card__title">{{ product.title }}</h3>
+
+<div class="card__description">
+  <p>{{ product.description }}</p>
+</div>
+
+<div class="card__categories">
+  <span
+    *ngFor="let category of product.categories"
+    class="card__category">
+    {{ category }}
+  </span>
+</div>

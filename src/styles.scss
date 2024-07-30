@@ -1,8 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
+html, body { height: 100%; }
 body {
   margin: 0;
-  background-color: #f2f4f7;
-  font-family: 'Open Sans', sans-serif;
+  background-color: var(--body-background-color);
+  font-family: Roboto, sans-serif;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+.snackbar__error {
+
+  .mdc-snackbar__label {
+    font-size: 1rem !important;
+  }
+
+  .mdc-snackbar__surface {
+    background-color: var(--snackbar-background-color) !important;
+  }
+
+  .mat-mdc-simple-snack-bar {
+    padding: 1rem;
+  }
+  .mdc-snackbar__actions {
+    padding-left: 2rem;
+
+    .mat-mdc-button {
+      background-color: var(--snackbar-action-button-background-color);
+      color: var(--snackbar-action-button-color) !important;
+    }
+  }
+}
+
+:root {
+
+  --body-background-color: #f2f4f7;
+
+  --main-background-color: #fff;
+
+  --loader-container-background-color: #cae4f778;
+  --loader-spinner-circle-color: #9bb9daad;
+  --loader-spinner-arm-color: #4170b678;
+
+  --products-button-border-color: #d7dbe0;
+  --products-button-background-color: #fff;
+  --products-button-hover-and-focus-background-color: #ebecf0;
+
+  --card-border-color: lightgray;
+  --card-text-color: #444;
+  --card-category-color: gray;
+  --card-category-border-color: lightgray;
+  --card-category-box-shadow-color: rgba(0, 0, 0, 0.1);
+
+  --snackbar-background-color: #c85454;
+  --snackbar-action-button-background-color: #00000063;
+  --snackbar-action-button-color: #fff;
 }

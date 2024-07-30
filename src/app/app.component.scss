@@ -1,29 +1,64 @@
-.stage {
-  width: 50%;
-  min-width: 360px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 4rem;
-  background-color: #fff;
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--loader-container-background-color);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  &__spinner {
+    width: 48px;
+    height: 48px;
+    background: var(--loader-spinner-circle-color);
+    border-radius: 50%;
+
+    animation: spin 3s infinite linear;
+
+    > div {
+      width: 48px;
+      height: 12px;
+      background: var(--loader-spinner-arm-color);
+      position: relative;
+      top: 18px;
+      left: 18px;
+    }
+  }
 }
 
-pre {
-  overflow: auto;
-  background-color: #f2f4f7;
-  padding: 1rem;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.more {
-  font: inherit;
-  display: block;
-  margin: 4rem auto 0;
-  border: 1px solid #d7dbe0;
-  border-radius: .25rem;
-  padding: 1rem 2rem;
-  background-color: #fff;
-  cursor: pointer;
+.main {
 
-  &:hover, &:focus {
-    background-color: #ebecf0;
+  overflow: overlay;
+  height: 100vh;
+  justify-content: flex-start;
+  display: flex;
+  position: relative;
+
+  .main__container {
+    width: 50%;
+    min-width: 360px;
+    max-width: 1400px;
+    min-height: 100vh;
+    height: max-content;
+    margin: 0 auto;
+    padding: 4rem;
+    background-color: var(--main-background-color);
   }
 }
