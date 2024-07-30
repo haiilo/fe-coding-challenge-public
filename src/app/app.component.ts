@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Page } from './products/page';
-import { Product } from './products/product';
-import { ProductService } from './products/product.service';
+import * as ProductSelectors from './store/product/product.selectors';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private readonly productService: ProductService) {}
 
-  readonly products$: Observable<Page<Product>> = this.productService.get(0);
+  readonly isLoading$: Observable<boolean> = this.store
+    .select(ProductSelectors.selectIsLoading);
+
+  constructor(private readonly store: Store) {}
 }

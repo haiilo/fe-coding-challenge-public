@@ -1,0 +1,28 @@
+<div #containerRef class="products__container">
+  <app-product-card
+    *ngFor="let product of products$ | async;"
+    [product]="product"
+    (click)="goToProduct(product.url)"
+    >
+  </app-product-card>
+
+  <!--
+  INFO: Empty cards as a simple way to keep proportions
+    for when card overflow to the next row and stretch
+    is making them be bulkier then others
+  -->
+  <div class="card card--empty" *ngFor="let _ of lastRowExtras();"></div>
+</div>
+
+<div *ngIf="hasError$ | async"
+  class="products__error-container">
+  <p>
+    Sorry for the inconvenience, the server is currently busy. Please try again later.
+  </p>
+</div>
+
+<button class="products__button"
+  *ngIf="!!canLoadMore()"
+  (click)="loadMore()">
+  Load more
+</button>
