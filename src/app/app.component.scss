@@ -6,10 +6,16 @@
   padding: 4rem;
   background-color: #fff;
 }
+.error {
+  color: red;
+  text-align: center;
+  margin: 1rem 0;
+}
 
-pre {
-  overflow: auto;
-  background-color: #f2f4f7;
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
   padding: 1rem;
 }
 
