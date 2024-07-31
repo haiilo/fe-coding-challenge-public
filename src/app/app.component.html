@@ -1,6 +1,27 @@
 <div class="stage">
-  <div class="products" *ngIf="products$ | async; let products">
-    <pre *ngFor="let product of products.content">{{ product | json }}</pre>
+  <div *ngIf="error$ | async as error" class="error">
+    {{ error }}
   </div>
-  <button class="more">Load more</button>
+  <div class="product-list">
+    <app-product-card
+      *ngFor="let product of products$ | async"
+      [product]="product"
+    ></app-product-card>
+  </div>
+  <button
+    *ngIf="(more$ | async) !== false"
+    class="more"
+    (click)="loadMore()"
+    [disabled]="loading$ | async"
+  >
+    <ng-container *ngIf="loading$ | async; else buttonContent">
+      Loading...
+    </ng-container>
+    <ng-template #buttonContent>
+      <ng-container *ngIf="(error$ | async) !== null; else loadMoreText">
+        Try again
+      </ng-container>
+      <ng-template #loadMoreText> Load more </ng-template>
+    </ng-template>
+  </button>
 </div>

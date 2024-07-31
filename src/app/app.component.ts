@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Page } from './products/page';
-import { Product } from './products/product';
-import { ProductService } from './products/product.service';
+
+import { ProductStateService } from './products/product-state.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,18 @@ import { ProductService } from './products/product.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private readonly productService: ProductService) {}
+  products$ = this.productStateService.products$;
+  loading$ = this.productStateService.loading$;
+  error$ = this.productStateService.error$;
+  more$ = this.productStateService.more$;
 
-  readonly products$: Observable<Page<Product>> = this.productService.get(0);
+  constructor(private productStateService: ProductStateService) {}
+  ngOnInit() {
+    this.productStateService.loadMore();
+  }
+
+  loadMore() {
+    this.productStateService.loadMore();
+  }
+
 }

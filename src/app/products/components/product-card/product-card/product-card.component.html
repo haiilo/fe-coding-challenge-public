@@ -1,0 +1,12 @@
+<div class="card" (click)="openProductUrl(product.url)">
+  <div class="card-image" [style.background-image]="getImageUrl(product.image)">
+    <div *ngIf="!product?.image" class="placeholder">Image not available</div>
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">{{ product.title }}</h3>
+    <p class="card-description">{{ product.description }}</p>
+    <ul class="card-categories">
+      <li *ngFor="let category of product.categories">{{ category }}</li>
+    </ul>
+  </div>
+</div>
